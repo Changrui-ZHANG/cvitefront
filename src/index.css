@@ -1,7 +1,38 @@
 @import "tailwindcss";
+@custom-variant dark (&:is(.dark *));
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+
+
+html.dark {
+  --background: #060010;
+  --text: #fff;
+}
+  /*
+  --silver1: linear-gradient(45deg,#707072, #CDCED2, #FCFCFE, #D0D1D6, #818286, #A1A1A3);
+  --silver3: linear-gradient(45deg,#3F3F3F,#ABABAD,#919193,#E2E2E2,#FCFCFC,#E6E0E0,#333333);
+  --silver4: linear-gradient(45deg,#676767, #FEFEFE, #D4D5D7, #BCBCBC, #FFFFFF, #E7E7E7, #777779);
+*/
+html.light {
+  --white-gradient: linear-gradient(45deg, #CECECE, #FFFFFF);
+
+  /* Light mode */
+  --background: #CECECE;
+  --background-image: var(--white-gradient);
+  --text: #ff00009d;
+}
+
+body{
+  background-image: var(--background-image);
+}
+
+.text{
+  color: var(--text);
+}
+
+
+
+
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;

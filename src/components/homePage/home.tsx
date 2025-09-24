@@ -5,6 +5,9 @@ import SplashCursor from "../../components/reactBits/SplashCursor/SplashCursor";
 import MagicBento from "../../components/reactBits/MagicBento/MagicBento";
 import LogoLoop from "../../components/reactBits/LogoLoop/LogoLoop";
 import TargetCursor from "../../components/reactBits/TargetCursor/TargetCursor";
+import ModelViewer from "../../components/reactBits/ModelViewer/ModelViewer";
+import { ModeToggle } from "../shadcn/themeMode/mode-toggle";
+import "./home.css";
 
 import {
   SiReact,
@@ -51,14 +54,14 @@ const imageLogos = [
 const Home: React.FC = () => {
   return (
     <>
+      <ModeToggle />
+      <TargetCursor spinDuration={5} hideDefaultCursor={false} />
       <div>
         <div>
-          <TargetCursor spinDuration={5} hideDefaultCursor={false} />
           <h1>Hover over the elements below</h1>
-          <button className="cursor-target">Click me!</button>
+          <button>Click me!</button>
           <div className="cursor-target">Hover target</div>
         </div>
-
         <SplashCursor />
         <ClickSpark
           sparkColor="#fff"
