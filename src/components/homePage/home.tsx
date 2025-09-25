@@ -1,14 +1,15 @@
-import FallingText from "../reactBits/fallinText/FallingText";
-import ClickSpark from "../reactBits/clickSpark/ClickSpark";
+import FallingText from "../reactBits/animation/fallinText/FallingText";
+import ClickSpark from "../reactBits/animation/clickSpark/ClickSpark";
 //import Noise from "../../components/reactBits/Noise/Noise";
-import SplashCursor from "../reactBits/splashCursor/SplashCursor";
-import MagicBento from "../reactBits/magicBento/MagicBento";
-import LogoLoop from "../reactBits/logoLoop/LogoLoop";
-import TargetCursor from "../reactBits/targetCursor/TargetCursor";
+import SplashCursor from "../reactBits/animation/splashCursor/SplashCursor";
+import MagicBento from "../reactBits/animation/magicBento/MagicBento";
+import LogoLoop from "../reactBits/animation/logoLoop/LogoLoop";
+import TargetCursor from "../reactBits/animation/targetCursor/TargetCursor";
 import { ModeToggle } from "../shadcn/themeMode/mode-toggle";
 import "./home.css";
-import Aurora from "../shadcn/background/aurora/Aurora";
-
+import Aurora from "../reactBits/background/aurora/Aurora";
+import Threads from "../reactBits/background/threads/Threads";
+import Orb from "../reactBits/background/orb/Orb";
 import {
   SiReact,
   SiNextdotjs,
@@ -81,6 +82,24 @@ const Home: React.FC = () => {
   return (
     <>
       <Aurora colorStops={auroraStops} blend={1} amplitude={1.0} speed={1} />
+      <div
+        style={{
+          width: "100%",
+          position: "absolute",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          top: 0,
+          pointerEvents: "none",
+        }}
+      >
+        <Orb
+          hoverIntensity={0.5}
+          rotateOnHover={true}
+          hue={0}
+          forceHoverState={false}
+        />
+      </div>
       <ModeToggle />
       <TargetCursor spinDuration={5} hideDefaultCursor={false} />
       <div>
