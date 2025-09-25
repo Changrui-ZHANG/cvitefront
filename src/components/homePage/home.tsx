@@ -1,15 +1,15 @@
-import FallingText from "../reactBits/animation/fallinText/FallingText";
-import ClickSpark from "../reactBits/animation/clickSpark/ClickSpark";
+import FallingText from "../reactBits/textAnimations/fallinText/FallingText";
+import ClickSpark from "../reactBits/animations/clickSpark/ClickSpark";
 //import Noise from "../../components/reactBits/Noise/Noise";
-import SplashCursor from "../reactBits/animation/splashCursor/SplashCursor";
-import MagicBento from "../reactBits/animation/magicBento/MagicBento";
-import LogoLoop from "../reactBits/animation/logoLoop/LogoLoop";
-import TargetCursor from "../reactBits/animation/targetCursor/TargetCursor";
+import SplashCursor from "../reactBits/animations/splashCursor/SplashCursor";
+import MagicBento from "../reactBits/animations/magicBento/MagicBento";
+import LogoLoop from "../reactBits/animations/logoLoop/LogoLoop";
+import TargetCursor from "../reactBits/animations/targetCursor/TargetCursor";
 import { ModeToggle } from "../shadcn/themeMode/mode-toggle";
 import "./home.css";
-import Aurora from "../reactBits/background/aurora/Aurora";
-import Threads from "../reactBits/background/threads/Threads";
-import Orb from "../reactBits/background/orb/Orb";
+import Aurora from "../reactBits/backgrounds/aurora/Aurora";
+import Threads from "../reactBits/backgrounds/threads/Threads";
+import Orb from "../reactBits/backgrounds/orb/Orb";
 import {
   SiReact,
   SiNextdotjs,
