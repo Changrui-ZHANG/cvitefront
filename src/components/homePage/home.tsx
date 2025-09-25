@@ -10,6 +10,7 @@ import "./home.css";
 import Aurora from "../reactBits/backgrounds/aurora/Aurora";
 import Threads from "../reactBits/backgrounds/threads/Threads";
 import Orb from "../reactBits/backgrounds/orb/Orb";
+
 import {
   SiReact,
   SiNextdotjs,
@@ -17,6 +18,9 @@ import {
   SiTailwindcss,
 } from "react-icons/si";
 import { useEffect, useState } from "react";
+import PillNav from "../reactBits/components/pillNav/PillNav";
+import GooeyNav from "../reactBits/components/gooeyNav/GooeyNav";
+import { sobel } from "three/examples/jsm/tsl/display/SobelOperatorNode.js";
 
 /*logo loop component*/
 const techLogos = [
@@ -79,9 +83,31 @@ const Home: React.FC = () => {
     return () => observer.disconnect();
   }, []);
   //-------------------------------------------------------------
+  const items = [
+    { label: "Home", href: "#" },
+    { label: "About", href: "#" },
+    { label: "Contact", href: "#" },
+  ];
   return (
     <>
       <Aurora colorStops={auroraStops} blend={1} amplitude={1.0} speed={1} />
+
+      <div
+        style={{
+          position: "relative",
+        }}
+      >
+        <GooeyNav
+          items={items}
+          particleCount={15}
+          particleDistances={[90, 10]}
+          particleR={100}
+          initialActiveIndex={0}
+          animationTime={600}
+          timeVariance={300}
+          colors={[1, 2, 3, 1, 2, 3, 1, 4]}
+        />
+      </div>
       <div
         style={{
           width: "100%",

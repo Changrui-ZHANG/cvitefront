@@ -11,8 +11,8 @@ html.dark {
   /*linear-gradient(45deg, #453D51,#7C7C93,#382835,#241C25)*/
   /*linear-gradient(45deg, #3F3649,#63546E,#463A4D,#261D24)*/
   --background-image: linear-gradient(#12121280,#36363683,#20202071,#000000c7);
-  --text: #F2F6F7;
-
+  --color: #c40e0e;
+  --color-active: rgb(59, 254, 0);
   /*aurora setting*/
   --aurora : #051B4C,#0D656A,#96FDE8;
   --aurora :#05586B,#10997F,#8CF2DE;
@@ -29,14 +29,14 @@ html.light {
   /* Light mode */  
   --background: #CECECE;
   --background-image: var(--white-gradient);
-  --text: #ff00009d;
+  --color: #ff00009d;
   --aurora : #000000,#3095d9,#eab72a;
 }
 
 body{
   background: var(--background);
   background-image: var(--background-image);
-  color: var(--text);
+  color: var(--color);
 }
 
 
