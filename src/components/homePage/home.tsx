@@ -1,13 +1,13 @@
-import FallingText from "../../components/reactBits/FallinText/FallingText";
-import ClickSpark from "../../components/reactBits/ClickSpark/ClickSpark";
+import FallingText from "../reactBits/fallinText/FallingText";
+import ClickSpark from "../reactBits/clickSpark/ClickSpark";
 //import Noise from "../../components/reactBits/Noise/Noise";
-import SplashCursor from "../../components/reactBits/SplashCursor/SplashCursor";
-import MagicBento from "../../components/reactBits/MagicBento/MagicBento";
-import LogoLoop from "../../components/reactBits/LogoLoop/LogoLoop";
-import TargetCursor from "../../components/reactBits/TargetCursor/TargetCursor";
-import ModelViewer from "../../components/reactBits/ModelViewer/ModelViewer";
+import SplashCursor from "../reactBits/splashCursor/SplashCursor";
+import MagicBento from "../reactBits/magicBento/MagicBento";
+import LogoLoop from "../reactBits/logoLoop/LogoLoop";
+import TargetCursor from "../reactBits/targetCursor/TargetCursor";
 import { ModeToggle } from "../shadcn/themeMode/mode-toggle";
 import "./home.css";
+import Aurora from "../shadcn/background/aurora/Aurora";
 
 import {
   SiReact,
@@ -15,6 +15,7 @@ import {
   SiTypescript,
   SiTailwindcss,
 } from "react-icons/si";
+import { useEffect, useState } from "react";
 
 /*logo loop component*/
 const techLogos = [
@@ -51,9 +52,35 @@ const imageLogos = [
   },
 ];
 
+//aurora component: theme change observer------------------------------
 const Home: React.FC = () => {
+  /*get aurora syle from css "index.css"*/
+  const [auroraStops, setAuroraStops] = useState<string[]>();
+  useEffect(() => {
+    const updateAuroraColors = () => {
+      const auroraVar = getComputedStyle(document.documentElement)
+        .getPropertyValue("--aurora")
+        .trim();
+      if (auroraVar) setAuroraStops(auroraVar.split(","));
+      console.log("Updated aurora colors:", auroraVar);
+    };
+
+    // appel initial
+    updateAuroraColors();
+
+    // observer la classe "dark" sur <html>
+    const observer = new MutationObserver(updateAuroraColors);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+  //-------------------------------------------------------------
   return (
     <>
+      <Aurora colorStops={auroraStops} blend={1} amplitude={1.0} speed={1} />
       <ModeToggle />
       <TargetCursor spinDuration={5} hideDefaultCursor={false} />
       <div>
