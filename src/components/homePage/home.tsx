@@ -10,6 +10,9 @@ import "./home.css";
 import Aurora from "../reactBits/backgrounds/aurora/Aurora";
 import Threads from "../reactBits/backgrounds/threads/Threads";
 import Orb from "../reactBits/backgrounds/orb/Orb";
+import ModelViewer from "../reactBits/animations/modelViewer/ModelViewer";
+import ModelViewerLightswind from "../reactBits/animations/modelViewer/ModelViewerLightswind";
+import Little_Ahri from "../../assets/3DModels/sk.glb";
 
 import {
   SiReact,
@@ -20,8 +23,7 @@ import {
 import { useEffect, useState } from "react";
 import PillNav from "../reactBits/components/pillNav/PillNav";
 import GooeyNav from "../reactBits/components/gooeyNav/GooeyNav";
-import { sobel } from "three/examples/jsm/tsl/display/SobelOperatorNode.js";
-
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 /*logo loop component*/
 const techLogos = [
   { node: <SiReact />, title: "React", href: "https://react.dev" },
@@ -83,30 +85,54 @@ const Home: React.FC = () => {
     return () => observer.disconnect();
   }, []);
   //-------------------------------------------------------------
+  //nav bar position reader-----------------------------------------------------
   const items = [
-    { label: "Home", href: "#" },
-    { label: "About", href: "#" },
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
     { label: "Contact", href: "#" },
   ];
+  function GooeyNavWrapper(items: { label: string; href: string }[]) {
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    // Trouver index selon l’URL
+    const activeIndex = items.findIndex(
+      (item) => item.href === location.pathname
+    );
+
+    return (
+      <GooeyNav
+        items={items}
+        initialActiveIndex={activeIndex >= 0 ? activeIndex : 0}
+        particleCount={15}
+        particleDistances={[90, 10]}
+        particleR={100}
+        animationTime={600}
+        timeVariance={300}
+        colors={[1, 2, 3, 1, 2, 3, 1, 4]}
+      />
+    );
+  }
+
   return (
     <>
+      <Outlet />
       <Aurora colorStops={auroraStops} blend={1} amplitude={1.0} speed={1} />
+
+      <ModelViewer
+        url={Little_Ahri}
+        width={400}
+        height={400}
+        showScreenshotButton={false}
+        autoRotate={true}
+      />
 
       <div
         style={{
           position: "relative",
         }}
       >
-        <GooeyNav
-          items={items}
-          particleCount={15}
-          particleDistances={[90, 10]}
-          particleR={100}
-          initialActiveIndex={0}
-          animationTime={600}
-          timeVariance={300}
-          colors={[1, 2, 3, 1, 2, 3, 1, 4]}
-        />
+        {GooeyNavWrapper(items)}
       </div>
       <div
         style={{

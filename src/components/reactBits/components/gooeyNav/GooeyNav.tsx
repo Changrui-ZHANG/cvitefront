@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import "./GooeyNav.css";
 import { ModeToggle } from "@/components/shadcn/themeMode/mode-toggle";
+import { Link } from "react-router-dom";
 
 interface GooeyNavItem {
   label: string;
@@ -194,13 +195,13 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
         <ul ref={navRef}>
           {items.map((item, index) => (
             <li key={index} className={activeIndex === index ? "active" : ""}>
-              <a
-                href={item.href}
+              <Link
+                to={item.href}
                 onClick={(e) => handleClick(e, index)}
                 onKeyDown={(e) => handleKeyDown(e, index)}
               >
                 {item.label}
-              </a>
+              </Link>
             </li>
           ))}
           <li>

@@ -25,6 +25,14 @@ import {
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader.js";
 import * as THREE from "three";
 
+const isMeshObject = (object: THREE.Object3D): object is THREE.Mesh => {
+  return "isMesh" in object && object.isMesh === true;
+};
+
+const isLightObject = (object: THREE.Object3D): object is THREE.Light => {
+  return "isLight" in object && object.isLight === true;
+};
+
 export interface ViewerProps {
   url: string;
   width?: number | string;
@@ -186,13 +194,18 @@ const ModelInner: FC<ModelInnerProps> = ({
     g.position.set(-sphere.center.x, -sphere.center.y, -sphere.center.z);
     g.scale.setScalar(s);
 
-    g.traverse((o: any) => {
-      if (o.isMesh) {
+    g.traverse((o: THREE.Object3D) => {
+      if (isMeshObject(o)) {
         o.castShadow = true;
         o.receiveShadow = true;
         if (fadeIn) {
-          o.material.transparent = true;
-          o.material.opacity = 0;
+          const materials = Array.isArray(o.material)
+            ? o.material
+            : [o.material];
+          materials.forEach((material) => {
+            material.transparent = true;
+            material.opacity = 0;
+          });
         }
       }
     });
@@ -221,8 +234,15 @@ const ModelInner: FC<ModelInnerProps> = ({
       const id = setInterval(() => {
         t += 0.05;
         const v = Math.min(t, 1);
-        g.traverse((o: any) => {
-          if (o.isMesh) o.material.opacity = v;
+        g.traverse((o: THREE.Object3D) => {
+          if (isMeshObject(o)) {
+            const materials = Array.isArray(o.material)
+              ? o.material
+              : [o.material];
+            materials.forEach((material) => {
+              material.opacity = v;
+            });
+          }
         });
         invalidate();
         if (v === 1) {
@@ -475,8 +495,8 @@ const ModelViewer: FC<ViewerProps> = ({
     if (!g || !s || !c) return;
     g.shadowMap.enabled = false;
     const tmp: { l: THREE.Light; cast: boolean }[] = [];
-    s.traverse((o: any) => {
-      if (o.isLight && "castShadow" in o) {
+    s.traverse((o: THREE.Object3D) => {
+      if (isLightObject(o)) {
         tmp.push({ l: o, cast: o.castShadow });
         o.castShadow = false;
       }
