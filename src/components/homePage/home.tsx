@@ -12,8 +12,10 @@ import Threads from "../reactBits/backgrounds/threads/Threads";
 import Orb from "../reactBits/backgrounds/orb/Orb";
 import ModelViewer from "../reactBits/animations/modelViewer/ModelViewer";
 import ModelViewerLightswind from "../reactBits/animations/modelViewer/ModelViewerLightswind";
-import Little_Ahri from "../../assets/3DModels/sk.glb";
-
+import Skarner from "../../assets/3DModels/LOL/sk.glb";
+import Zed from "../../assets/3DModels/LOL/zed.glb";
+import modelTest from "../../assets/3DModels/LOL/Chibi/x02m/annie_superfan_d'arcane_chibi_prestige.glb";
+import ProfileCard from "../reactBits/components/ProfileCard/ProfileCard";
 import {
   SiReact,
   SiNextdotjs,
@@ -24,6 +26,7 @@ import { useEffect, useState } from "react";
 import PillNav from "../reactBits/components/pillNav/PillNav";
 import GooeyNav from "../reactBits/components/gooeyNav/GooeyNav";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import AnimatedContent from "../reactBits/animations/animatedContent/animatedContent";
 /*logo loop component*/
 const techLogos = [
   { node: <SiReact />, title: "React", href: "https://react.dev" },
@@ -120,13 +123,24 @@ const Home: React.FC = () => {
       <Aurora colorStops={auroraStops} blend={1} amplitude={1.0} speed={1} />
 
       <ModelViewer
-        url={Little_Ahri}
-        width={400}
-        height={400}
+        url={modelTest}
+        width={200}
+        height={200}
         showScreenshotButton={false}
         autoRotate={true}
       />
-
+      <ProfileCard
+        name="Javi A. Torres"
+        title="Software Engineer"
+        handle="javicodes"
+        status="Online"
+        contactText="Contact Me"
+        avatarUrl="../../assets/Photos/Changrui.jpg"
+        showUserInfo={true}
+        enableTilt={true}
+        enableMobileTilt={false}
+        onContactClick={() => console.log("Contact clicked")}
+      />
       <div
         style={{
           position: "relative",
@@ -194,18 +208,31 @@ const Home: React.FC = () => {
             mouseConstraintStiffness={0.9}
           />
         </ClickSpark>
-        <MagicBento
-          textAutoHide={true}
-          enableStars={true}
-          enableSpotlight={true}
-          enableBorderGlow={true}
-          enableTilt={true}
-          enableMagnetism={true}
-          clickEffect={true}
-          spotlightRadius={300}
-          particleCount={12}
-          glowColor="132, 0, 255"
-        />
+        <AnimatedContent
+          distance={150}
+          direction="vertical"
+          reverse={false}
+          duration={2}
+          ease="power3.out"
+          initialOpacity={0}
+          animateOpacity
+          scale={1}
+          threshold={0.2}
+          delay={0}
+        >
+          <MagicBento
+            textAutoHide={true}
+            enableStars={true}
+            enableSpotlight={true}
+            enableBorderGlow={true}
+            enableTilt={true}
+            enableMagnetism={true}
+            clickEffect={true}
+            spotlightRadius={300}
+            particleCount={12}
+            glowColor="132, 0, 255"
+          />
+        </AnimatedContent>
       </div>
 
       <LogoLoop
