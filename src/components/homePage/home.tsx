@@ -8,13 +8,13 @@ import TargetCursor from "../reactBits/animations/targetCursor/TargetCursor";
 import { ModeToggle } from "../shadcn/themeMode/mode-toggle";
 import "./home.css";
 import Aurora from "../reactBits/backgrounds/aurora/Aurora";
-import Threads from "../reactBits/backgrounds/threads/Threads";
+//import Threads from "../reactBits/backgrounds/threads/Threads";
 import Orb from "../reactBits/backgrounds/orb/Orb";
 import ModelViewer from "../reactBits/animations/modelViewer/ModelViewer";
-import ModelViewerLightswind from "../reactBits/animations/modelViewer/ModelViewerLightswind";
-import Skarner from "../../assets/3DModels/LOL/sk.glb";
-import Zed from "../../assets/3DModels/LOL/zed.glb";
-import modelTest from "../../assets/3DModels/LOL/Chibi/x02m/annie_superfan_d'arcane_chibi_prestige.glb";
+//import ModelViewerLightswind from "../reactBits/animations/modelViewer/ModelViewerLightswind";
+//import Skarner from "../../assets/3DModels/LOL/sk.glb";
+//import Zed from "../../assets/3DModels/LOL/zed.glb";
+import modelTest from "/assets/3DModels/LOL/Chibi/x02m/annie_superfan_d'arcane_chibi_prestige.glb";
 import ProfileCard from "../reactBits/components/ProfileCard/ProfileCard";
 import {
   SiReact,
@@ -23,9 +23,9 @@ import {
   SiTailwindcss,
 } from "react-icons/si";
 import { useEffect, useState } from "react";
-import PillNav from "../reactBits/components/pillNav/PillNav";
+//import PillNav from "../reactBits/components/pillNav/PillNav";
 import GooeyNav from "../reactBits/components/gooeyNav/GooeyNav";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import AnimatedContent from "../reactBits/animations/animatedContent/animatedContent";
 /*logo loop component*/
 const techLogos = [
@@ -44,6 +44,7 @@ const techLogos = [
 ];
 
 // Alternative with image sources
+/*
 const imageLogos = [
   {
     src: "/logos/company1.png",
@@ -60,7 +61,7 @@ const imageLogos = [
     alt: "Company 3",
     href: "https://company3.com",
   },
-];
+];*/
 
 //aurora component: theme change observer------------------------------
 const Home: React.FC = () => {
@@ -96,7 +97,7 @@ const Home: React.FC = () => {
   ];
   function GooeyNavWrapper(items: { label: string; href: string }[]) {
     const location = useLocation();
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
     // Trouver index selon l’URL
     const activeIndex = items.findIndex(
@@ -135,7 +136,7 @@ const Home: React.FC = () => {
         handle="javicodes"
         status="Online"
         contactText="Contact Me"
-        avatarUrl="../../assets/Photos/Changrui.jpg"
+        avatarUrl="/assets/Photos/Changrui.jpg"
         showUserInfo={true}
         enableTilt={true}
         enableMobileTilt={false}

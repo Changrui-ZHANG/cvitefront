@@ -144,7 +144,7 @@ const SceneContent: FC<{
   const modelRef = useRef<THREE.Group>(null!);
   const ext = url.split(".").pop()?.toLowerCase();
 
-  useFrame((state, delta) => {
+  useFrame((_state, delta) => {
     if (autoRotate && modelRef.current) {
       modelRef.current.rotation.y += (autoRotateSpeed || 1) * delta;
     }
