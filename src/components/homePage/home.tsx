@@ -16,6 +16,8 @@ import ModelViewer from "../reactBits/animations/modelViewer/ModelViewer";
 //import Zed from "../../assets/3DModels/LOL/zed.glb";
 import modelTest from "/assets/3DModels/LOL/Chibi/x02m/annie_superfan_d'arcane_chibi_prestige.glb";
 import ProfileCard from "../reactBits/components/ProfileCard/ProfileCard";
+import { useTranslation, Trans } from "react-i18next";
+
 import {
   SiReact,
   SiNextdotjs,
@@ -117,9 +119,10 @@ const Home: React.FC = () => {
       />
     );
   }
-
+  const { t: Language, i18n } = useTranslation();
   return (
     <>
+      {Language("welcome")}
       <Outlet />
       <Aurora colorStops={auroraStops} blend={1} amplitude={1.0} speed={1} />
 
