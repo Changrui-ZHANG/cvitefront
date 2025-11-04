@@ -19,7 +19,7 @@ i18n
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },
-    lng: "fr", // langue par défaut
+    lng: localStorage.getItem("i18n") || "fr", // langue par défaut
     resources: {
       en: { translation: en },
       fr: { translation: fr },

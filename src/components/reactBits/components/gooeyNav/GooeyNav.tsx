@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import "./GooeyNav.css";
-import { ModeToggle } from "@/components/shadcn/themeMode/mode-toggle";
+import { ModeToggle } from "@/components/themeMode/mode-toggle";
 import { Link } from "react-router-dom";
 
 interface GooeyNavItem {

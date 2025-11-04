@@ -1,22 +1,23 @@
-import FallingText from "../reactBits/textAnimations/fallinText/FallingText";
-import ClickSpark from "../reactBits/animations/clickSpark/ClickSpark";
+import FallingText from "@/components/reactBits/textAnimations/fallinText/FallingText";
+import ClickSpark from "@/components/reactBits/animations/clickSpark/ClickSpark";
 //import Noise from "../../components/reactBits/Noise/Noise";
-import SplashCursor from "../reactBits/animations/splashCursor/SplashCursor";
-import MagicBento from "../reactBits/animations/magicBento/MagicBento";
-import LogoLoop from "../reactBits/animations/logoLoop/LogoLoop";
-import TargetCursor from "../reactBits/animations/targetCursor/TargetCursor";
-import { ModeToggle } from "../shadcn/themeMode/mode-toggle";
+import SplashCursor from "@/components/reactBits/animations/splashCursor/SplashCursor";
+import MagicBento from "@/components/reactBits/animations/magicBento/MagicBento";
+import LogoLoop from "@/components/reactBits/animations/logoLoop/LogoLoop";
+import TargetCursor from "@/components/reactBits/animations/targetCursor/TargetCursor";
+import { ModeToggle } from "@/components/themeMode/mode-toggle";
 import "./home.css";
-import Aurora from "../reactBits/backgrounds/aurora/Aurora";
+import Aurora from "@/components/reactBits/backgrounds/aurora/Aurora";
 //import Threads from "../reactBits/backgrounds/threads/Threads";
-import Orb from "../reactBits/backgrounds/orb/Orb";
-import ModelViewer from "../reactBits/animations/modelViewer/ModelViewer";
+import Orb from "@/components/reactBits/backgrounds/orb/Orb";
+import ModelViewer from "@/components/reactBits/animations/modelViewer/ModelViewer";
 //import ModelViewerLightswind from "../reactBits/animations/modelViewer/ModelViewerLightswind";
 //import Skarner from "../../assets/3DModels/LOL/sk.glb";
 //import Zed from "../../assets/3DModels/LOL/zed.glb";
 import modelTest from "/assets/3DModels/LOL/Chibi/x02m/annie_superfan_d'arcane_chibi_prestige.glb";
-import ProfileCard from "../reactBits/components/ProfileCard/ProfileCard";
+import ProfileCard from "@/components/reactBits/components/ProfileCard/ProfileCard";
 import { useTranslation, Trans } from "react-i18next";
+import { LangToggle } from "@/components/i18n/lang-toggle";
 
 import {
   SiReact,
@@ -26,9 +27,9 @@ import {
 } from "react-icons/si";
 import { useEffect, useState } from "react";
 //import PillNav from "../reactBits/components/pillNav/PillNav";
-import GooeyNav from "../reactBits/components/gooeyNav/GooeyNav";
+import GooeyNav from "@/components/reactBits/components/gooeyNav/GooeyNav";
 import { Outlet, useLocation } from "react-router-dom";
-import AnimatedContent from "../reactBits/animations/animatedContent/animatedContent";
+import AnimatedContent from "@/components/reactBits/animations/animatedContent/animatedContent";
 /*logo loop component*/
 const techLogos = [
   { node: <SiReact />, title: "React", href: "https://react.dev" },
@@ -119,10 +120,12 @@ const Home: React.FC = () => {
       />
     );
   }
-  const { t: Language, i18n } = useTranslation();
+  const { t } = useTranslation();
+
   return (
     <>
-      {Language("welcome")}
+      <LangToggle />
+      {t("welcome")}
       <Outlet />
       <Aurora colorStops={auroraStops} blend={1} amplitude={1.0} speed={1} />
 

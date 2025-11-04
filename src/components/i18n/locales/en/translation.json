@@ -1,5 +1,7 @@
 {
   "welcome": "Welcome to my website",
   "about": "About me",
-  "contact": "Contact"
+  "contact": "Contact",
+  "en": "English",
+  "fr": "French"
 }

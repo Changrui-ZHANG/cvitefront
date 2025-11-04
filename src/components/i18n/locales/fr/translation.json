@@ -1,5 +1,7 @@
 {
   "welcome": "Bienvenue sur mon site",
   "about": "À propos de moi",
-  "contact": "Contact"
+  "contact": "Contact",
+  "en": "Anglais",
+  "fr": "Français"
 }
