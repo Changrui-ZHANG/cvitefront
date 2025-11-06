@@ -3,6 +3,7 @@ import Home from "@/components/pages/homePage/home";
 import IndexPage from "@/components/pages/indexPage/indexPage";
 
 import { ThemeProvider } from "@/components/themeMode/theme-provider";
+import { Layout } from "lucide-react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
