@@ -6,7 +6,6 @@ import MagicBento from "@/components/reactBits/animations/magicBento/MagicBento"
 import LogoLoop from "@/components/reactBits/animations/logoLoop/LogoLoop";
 import TargetCursor from "@/components/reactBits/animations/targetCursor/TargetCursor";
 import { ModeToggle } from "@/components/themeMode/mode-toggle";
-import "./home.css";
 import Aurora from "@/components/reactBits/backgrounds/aurora/Aurora";
 //import Threads from "../reactBits/backgrounds/threads/Threads";
 import Orb from "@/components/reactBits/backgrounds/orb/Orb";
