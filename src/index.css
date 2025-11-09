@@ -169,7 +169,7 @@
 
 @layer base {
   body {
-    @apply h-full  bg-[linear-gradient(var(--background-image))]  leading-1 border-8 border-red-600;
+    @apply h-full  bg-[linear-gradient(var(--background-image))]  leading-1;
   }
   html{
     @apply h-full;
