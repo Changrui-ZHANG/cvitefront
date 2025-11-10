@@ -1,7 +1,138 @@
 {
-  "welcome": "Welcome to my website",
-  "about": "About me",
+  "welcome": "Bienvenue sur mon site",
+  "about": "À propos de moi",
   "contact": "Contact",
-  "en": "English",
-  "fr": "French"
+  "en": "Anglais",
+  "fr": "Français",
+
+  "cv": {
+    "educationsStr": "Education",
+    "experiencesStr": "Expériences",
+    "profileStr": "Profil",
+    "skillsStr": "Compétences",
+    "interestsStr": "Centres d'intérêt",
+    "profile": {
+      "name": "Changrui ZHANG",
+      "role": "Développeur Fullstack",
+      "email": "m.zhang.changrui@gmail.com",
+      "phone": "+33 6 52 94 63 09",
+      "location": "Paris, France",
+      "linkedin": "linkedin.com/in/changrui-zhang",
+      "github": "github.com/Changrui-ZHANG",
+      "aboutMe": "Développeur back-end diplômé en Master Informatique (Sorbonne Université), expérimenté sur Spring Boot et ReactJS. Rigoureux, autonome et passionné par les défis techniques, je recherche un poste dans le développement back-end/fullstack. Je possède une carte de résident me permettant de travailler librement en France."
+    },
+    "experiences": [
+      {
+        "role": "Espace Web",
+        "company": "Full stack, Projet personnel",
+        "period": "En cours",
+        "achievements": [
+          "Développer en autonomie un site web full-stack type espace personnel.",
+          "Intégrer le système d’authentification, le mode Dark/Light et le multilingue.",
+          "Enchantement des composants dynamique avec ReactBit.",
+          "Conteneuriser le projet avec Docker."
+        ],
+        "techs": [
+          "Java",
+          "Spring Boot",
+          "ReactJs",
+          "JavaScript",
+          "TypeScript",
+          "Vite",
+          "ReactBit",
+          "Tailwinds",
+          "JWT",
+          "Copilot",
+          "Git",
+          "Docker",
+          "Jira",
+          "Postgresql",
+          "API REST"
+        ],
+        "location": "Paris, France"
+      },
+      {
+        "role": "Développeur Fullstack (Stage) ",
+        "company": "Rakuten France, Catalogue",
+        "period": "02/2024 - 09/2024",
+        "achievements": [
+          "Migrer et optimiser le composant de filtrage (250M exports/jour) : temps de configuration réduit de 2 min à <30 s.",
+          "Développer en autonomie deux nouveaux supports d’import (XML + JSON) des fiches produits sur la plateforme, facilitant l’intégration de 250+ partenaires.",
+          "Intégrer l’IA dans le traitement des données.",
+          "Migrer de ReactJS 15+ vers 20+ et de JavaScript vers TypeScript.",
+          "Développer en autonomie un outil de migration automatisée (3 semaines), garantissant l’intégrité de milliers de données clients et réduisant les erreurs manuelles.",
+          "Développer en autonomie un programme de synchronisation des coupons de réduction, garantissant la fiabilité des promotions visibles par des millions d’utilisateurs.",
+          "Réaliser des tests unitaires et automatisés pour garantir la fiabilité du code.",
+          "Suivre les cahiers des charges et la roadmap produit afin de garantir la conformité des livrables et le respect des délais.",
+          "Organiser des réunions de reporting et des meetings quotidiens en méthodologie Agile."
+        ],
+        "techs": [
+          "Java",
+          "Spring Boot",
+          "ReactJS",
+          "JavaScript",
+          "TypeScript",
+          "SQL",
+          "Docker",
+          "Git",
+          "Jenkins",
+          "Elasticsearch",
+          "Hibernate",
+          "Redis",
+          "MariaDB",
+          "Liquibase",
+          "Jira",
+          "Velocity",
+          "Prometheus",
+          "Grafana",
+          "CI/CD",
+          "IntelliJ",
+          "API REST"
+        ],
+        "location": "Paris, France"
+      }
+    ],
+    "educations": [
+      {
+        "degree": "Master Informatique",
+        "field": "Systèmes et Applications Répartis",
+        "school": "Sorbonne Université",
+        "period": "2022 - 2024"
+      },
+      {
+        "degree": "Licence Informatique",
+        "field": "Informatique Générale",
+        "school": "Université Paris Cité",
+        "period": "2019 - 2022"
+      }
+    ],
+    "skills": [
+      {
+        "category": "Frontend",
+        "skills": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vue.js"]
+      },
+      {
+        "category": "Backend",
+        "skills": ["Node.js", "Express", "NestJS", "GraphQL", "REST API"]
+      },
+      {
+        "category": "Database",
+        "skills": ["PostgreSQL", "MongoDB", "Redis", "MySQL"]
+      },
+      {
+        "category": "DevOps",
+        "skills": ["Docker", "Kubernetes", "AWS", "CI/CD", "Git"]
+      },
+      {
+        "category": "Languages",
+        "skills": [
+          "Chinese (Native)",
+          "English (Professional)",
+          "French (Bilingual)"
+        ]
+      }
+    ],
+    "interests": ["Open Source", "AI/ML", "Hackathons", "Photography"],
+    "lastUpdate": "Last updated: November 2025"
+  }
 }

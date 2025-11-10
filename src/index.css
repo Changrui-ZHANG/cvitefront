@@ -53,6 +53,17 @@
   --shadow-2xl: 0px 2px 0px 0px hsl(0 0% 20% / 0.38);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
+
+
+  /* Cv theme colors Centralized  */
+  
+  --color-cv-decoration: #155dfc; /*#155dfc = text-blue-600*/
+  --cv-primary: #3b82f6;
+  --cv-text-primary: #111827;
+  --cv-text-secondary: #44464b;
+  --cv-text-tertiary: #9ca3af;
+  --cv-badge: #f7f7f7;
+
 }
 
 .dark {
@@ -159,6 +170,15 @@
   --shadow-lg: var(--shadow-lg);
   --shadow-xl: var(--shadow-xl);
   --shadow-2xl: var(--shadow-2xl);
+
+  /* CV Theme Colors */ 
+  --color-cv-decoration: var(--color-cv-decoration);
+
+  --color-cv-primary: var(--cv-primary);
+  --color-cv-text-primary: var(--cv-text-primary);
+  --color-cv-text-secondary: var(--cv-text-secondary);
+  --color-cv-text-tertiary: var(--cv-text-tertiary);
+  --color-cv-badge: var(--cv-badge);
 }
 
 
