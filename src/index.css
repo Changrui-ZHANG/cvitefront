@@ -54,17 +54,17 @@
   --tracking-normal: 0em;
   --spacing: 0.25rem;
 
-
   /* Cv theme colors Centralized  */
-  
+
   --color-cv-decoration: #155dfc; /*#155dfc = text-blue-600*/
   --cv-primary: #3b82f6;
   --cv-text-primary: #111827;
   --cv-text-secondary: #44464b;
-  --cv-text-tertiary: #9ca3af;
-  --cv-badge: #f7f7f7;
+  --cv-text-tertiary: #6c6c6c;
+  --cv-badge: #f9f9f9;
 
-}
+  --color-tes: rgb(72, 0, 255);
+} 
 
 .dark {
   --background: #1a1a1a;
@@ -170,10 +170,10 @@
   --shadow-lg: var(--shadow-lg);
   --shadow-xl: var(--shadow-xl);
   --shadow-2xl: var(--shadow-2xl);
-
+  /* police size */
+  --font-h1: 42px; 
   /* CV Theme Colors */ 
   --color-cv-decoration: var(--color-cv-decoration);
-
   --color-cv-primary: var(--cv-primary);
   --color-cv-text-primary: var(--cv-text-primary);
   --color-cv-text-secondary: var(--cv-text-secondary);

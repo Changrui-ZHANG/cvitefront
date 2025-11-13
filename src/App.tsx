@@ -4,8 +4,8 @@ import IndexPage from "@/components/pages/indexPage/indexPage";
 import Cv from "@/components/pages/cv/cv";
 
 import { ThemeProvider } from "@/components/themeMode/theme-provider";
-import { Layout } from "lucide-react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import NavLayer from "./components/pages/navLayer";
 
 function App() {
   return (
@@ -17,6 +17,9 @@ function App() {
             <Route path="about" element={<div>About Page</div>} />
           </Route>
           <Route path="/cv" element={<Cv />} />
+          <Route path="/nav" element={<NavLayer />}>
+            <Route path="cv" element={<Cv />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

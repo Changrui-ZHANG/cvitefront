@@ -13,6 +13,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { useTranslation, Trans } from "react-i18next";
+import GradualBlur from "@/components/reactBits/animations/gradualBlur/gradualBlur";
 export default function Cv() {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -20,7 +21,7 @@ export default function Cv() {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.2,
+        delayChildren: 0.1,
       },
     },
   };
@@ -30,7 +31,7 @@ export default function Cv() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, ease: "easeInOut" },
+      transition: { duration: 0.3, ease: "easeInOut" },
     },
   };
 
@@ -80,10 +81,20 @@ export default function Cv() {
     skills: string[];
   }
 
-  const cv = t("cv", { returnObjects: true }) as CvTranslation;
-  console.log(cv);
+  const cv: CvTranslation = t("cv", { returnObjects: true }) as CvTranslation;
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-4 md:p-8 flex items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 md:p-8 flex justify-center">
+      <GradualBlur
+        target="parent"
+        position="bottom"
+        height="4rem"
+        strength={2}
+        divCount={1}
+        curve="linear"
+        exponential={true}
+        opacity={1}
+      />
       <motion.div
         initial="hidden"
         animate="visible"
@@ -195,7 +206,7 @@ export default function Cv() {
                         {exp.period}
                       </span>
                     </div>
-                    <div className="flex justify-between items-start italic pb-1 pt-1">
+                    <div className="flex justify-between items-start italic pb-2 pt-1">
                       <p className="text-[13px] text-cv-text-tertiary">
                         {exp.company}
                       </p>
@@ -293,10 +304,10 @@ export default function Cv() {
                       {category.skills.map((skill, i) => (
                         <motion.div
                           key={i}
-                          whileHover={{ scale: 1.05, y: -2 }}
+                          whileHover={{ scale: 1, y: -2 }}
                           transition={{
                             type: "spring",
-                            stiffness: 400,
+                            stiffness: 4000,
                             damping: 10,
                           }}
                         >

@@ -14,7 +14,7 @@ import ModelViewer from "@/components/reactBits/animations/modelViewer/ModelView
 //import Skarner from "../../assets/3DModels/LOL/sk.glb";
 //import Zed from "../../assets/3DModels/LOL/zed.glb";
 import modelTest from "/assets/3DModels/LOL/Chibi/x02m/annie_superfan_d'arcane_chibi_prestige.glb";
-import ProfileCard from "@/components/reactBits/components/ProfileCard/ProfileCard";
+import ProfileCard from "@/components/reactBits/components/profileCard/ProfileCard";
 import { useTranslation, Trans } from "react-i18next";
 import { LangToggle } from "@/components/i18n/lang-toggle";
 
@@ -29,6 +29,7 @@ import { useEffect, useState } from "react";
 import GooeyNav from "@/components/reactBits/components/gooeyNav/GooeyNav";
 import { Outlet, useLocation } from "react-router-dom";
 import AnimatedContent from "@/components/reactBits/animations/animatedContent/animatedContent";
+import GlassSurface from "@/components/reactBits/components/glassSurface/GlassSurface";
 /*logo loop component*/
 const techLogos = [
   { node: <SiReact />, title: "React", href: "https://react.dev" },
@@ -123,11 +124,18 @@ const Home: React.FC = () => {
 
   return (
     <>
+      <GlassSurface
+        width={100}
+        height={50}
+        borderRadius={24}
+        className="pill-label"
+      >
+        hello
+      </GlassSurface>
       <LangToggle />
       {t("welcome")}
       <Outlet />
       <Aurora colorStops={auroraStops} blend={1} amplitude={1.0} speed={1} />
-
       <ModelViewer
         url={modelTest}
         width={200}
@@ -240,7 +248,6 @@ const Home: React.FC = () => {
           />
         </AnimatedContent>
       </div>
-
       <LogoLoop
         logos={techLogos}
         speed={120}
