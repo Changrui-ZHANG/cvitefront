@@ -81,7 +81,9 @@ export default function Cv() {
     skills: string[];
   }
 
-  const cv: CvTranslation = t("cv", { returnObjects: true }) as CvTranslation;
+  const cv: CvTranslation = t("cvObject", {
+    returnObjects: true,
+  }) as CvTranslation;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 md:p-8 flex justify-center">
@@ -106,7 +108,7 @@ export default function Cv() {
           <motion.div variants={itemVariants}>
             <Avatar className="h-32 w-32 ring-4 ring-cv-decoration/20">
               <AvatarImage
-                src="/public/assets/Photos/Changrui2.jpg"
+                src="/assets/Photos/Changrui2.jpg"
                 alt="Profile"
                 className="object-cover h-full w-full"
               />

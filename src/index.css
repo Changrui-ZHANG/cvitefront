@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));/* très important, par défaut tailwinds regarde la proprieté "prefers-color-scheme" et pas .dark dans html, cette ligne permet de regarder .dark*/
+
 @import "tw-animate-css";
 :root {
   --background: #f0f0f0;

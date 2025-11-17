@@ -12,13 +12,11 @@ function App() {
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <BrowserRouter>
         <Routes>
-          <Route path="/index" element={<IndexPage />}></Route>
-          <Route path="/" element={<Home />}>
-            <Route path="about" element={<div>About Page</div>} />
-          </Route>
-          <Route path="/cv" element={<Cv />} />
-          <Route path="/nav" element={<NavLayer />}>
+          <Route path="/" element={<NavLayer />}>
+            <Route index element={<Home />} />
+            <Route path="home" element={<Home />} />
             <Route path="cv" element={<Cv />} />
+            <Route path="index" element={<IndexPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

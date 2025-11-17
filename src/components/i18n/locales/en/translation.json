@@ -4,8 +4,16 @@
   "contact": "Contact",
   "en": "Anglais",
   "fr": "Français",
+  "cv": "Cv",
+  "home": "Home",
+  "index": "Index",
+  "fr": "Français",
+  "en": "Anglais",
+  "lang": "LanguageEn",
+  "langs": "LanguagesEn",
+  "param": "Paramètre",
 
-  "cv": {
+  "cvObject": {
     "educationsStr": "Education",
     "experiencesStr": "Expériences",
     "profileStr": "Profil",
