@@ -56,16 +56,7 @@
   --tracking-normal: 0em;
   --spacing: 0.25rem;
 
-  /* Cv theme colors Centralized  */
-
-  --color-cv-decoration: #155dfc; /*#155dfc = text-blue-600*/
-  --cv-primary: #3b82f6;
-  --cv-text-primary: #111827;
-  --cv-text-secondary: #44464b;
-  --cv-text-tertiary: #6c6c6c;
-  --cv-badge: #f9f9f9;
-
-  --color-tes: rgb(72, 0, 255);
+  --color-cv-decoration: #004df2; 
 } 
 
 .dark {
@@ -76,9 +67,9 @@
   --popover: #202020;
   --popover-foreground: #d9d9d9;
   --primary: #a0a0a0;
-  --primary-foreground: #1a1a1a;
+  --primary-foreground: #020202;
   --secondary: #303030;
-  --secondary-foreground: #d9d9d9;
+  --secondary-foreground: #ede3e3;
   --muted: #2a2a2a;
   --muted-foreground: #808080;
   --accent: #404040;
@@ -119,6 +110,7 @@
   --shadow-lg: 0px 2px 0px 0px hsl(0 0% 20% / 0.15), 0px 4px 6px -1px hsl(0 0% 20% / 0.15);
   --shadow-xl: 0px 2px 0px 0px hsl(0 0% 20% / 0.15), 0px 8px 10px -1px hsl(0 0% 20% / 0.15);
   --shadow-2xl: 0px 2px 0px 0px hsl(0 0% 20% / 0.38);
+  --color-cv-decoration: #00ff48;
 }
 
 @theme inline {
@@ -176,11 +168,7 @@
   --font-h1: 42px; 
   /* CV Theme Colors */ 
   --color-cv-decoration: var(--color-cv-decoration);
-  --color-cv-primary: var(--cv-primary);
-  --color-cv-text-primary: var(--cv-text-primary);
-  --color-cv-text-secondary: var(--cv-text-secondary);
-  --color-cv-text-tertiary: var(--cv-text-tertiary);
-  --color-cv-badge: var(--cv-badge);
+
 }
 
 

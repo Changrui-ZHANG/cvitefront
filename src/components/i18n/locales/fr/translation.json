@@ -1,6 +1,7 @@
 {
   "welcome": "Bienvenue sur mon site",
   "about": "À propos de moi",
+  "usedTechs": "Ce site est développé en ReactJs + Java",
   "contact": "Contact",
   "en": "Anglais",
   "fr": "Français",
@@ -12,6 +13,7 @@
   "lang": "LanguageFr",
   "langs": "LanguagesFr",
   "param": "Paramètre",
+  "theme": "Thème",
 
   "cvObject": {
     "educationsStr": "Education",
@@ -98,6 +100,62 @@
           "API REST"
         ],
         "location": "Paris, France"
+      },
+      {
+        "role": "Application web e-commerce",
+        "company": "Sorbonne université",
+        "period": "09/2023 - 03/2024",
+        "achievements": [
+          "Piloter une application e-shop collaborative avec feature flags pour une gestion flexible.",
+          "Développer l’application full stack (backend, frontend, base de données), conforme au cahier des charges.",
+          "Intégrer un système complet d’authentification et de gestion des utilisateurs.",
+          "Automatiser la génération de variantes produits (Product Line) pour améliorer l’efficacité et la personnalisation."
+        ],
+        "techs": [
+          "Java",
+          "Spring Boot",
+          "REST API",
+          "ReactJS",
+          "JavaScript",
+          "MySQL",
+          "Git",
+          "Maven",
+          "JUnit",
+          "Flagsmith (Feature Flags)",
+          "Microservices",
+          "JWT",
+          "Moobios forge",
+          "API REST"
+        ],
+        "location": "Paris, France"
+      },
+      {
+        "role": "Projet Ouichefs (Prog Noyau Linux)",
+        "company": "Sorbonne université",
+        "period": "09/2023 - 03/2024",
+        "achievements": [
+          "Développer un système de lien physique améliorés",
+          "Implémenter le système de lien physique avec ajout d’UUID, gestion des liens inter-partitions et migration des blocs."
+        ],
+        "techs": [
+          "C",
+          "Module Linux",
+          "Système de fichier",
+          "ioctl",
+          "Linux Kernel"
+        ],
+        "location": "Paris, France"
+      },
+      {
+        "role": "Modélisation de base de données",
+        "company": "Université Paris Cité",
+        "period": "09/2021 - 03/2022",
+        "achievements": [
+          "Concevoir une base de données pour simuler les navigations de bateaux antiques.",
+          "Utiliser PostgreSQL pour la conception et la gestion des données, en intégrant des outils de modélisation collaboratifs."
+        ],
+        "techs": ["PostgreSQL", "BOUML", "StarUML"],
+        "location": "Paris, France"
       }
     ],
     "educations": [
@@ -117,22 +175,36 @@
     "skills": [
       {
         "category": "Frontend",
-        "skills": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vue.js"]
+        "skills": ["React", "JavaScript", "TypeScript", "Tailwind CSS"]
       },
       {
         "category": "Backend",
-        "skills": ["Node.js", "Express", "NestJS", "GraphQL", "REST API"]
+        "skills": ["Java", "Scala", "C/C++", "Python"]
       },
       {
         "category": "Database",
-        "skills": ["PostgreSQL", "MongoDB", "Redis", "MySQL"]
+        "skills": ["PostgreSQL", "MariaDB", "MySQL", "SQL/NoSQL"]
       },
       {
         "category": "DevOps",
-        "skills": ["Docker", "Kubernetes", "AWS", "CI/CD", "Git"]
+        "skills": ["Docker", "CI/CD", "Git"]
+      },
+      { "category": "Systèmes d'exploitation", "skills": ["Linux", "Windows"] },
+      {
+        "category": "Soft Skills",
+        "skills": [
+          "Autonomie",
+          "Rigueur",
+          "Bon relationnel",
+          "Esprit de synthèse",
+          "Capacité d’adaptation",
+          "Motivation",
+          "Curiosité",
+          "Esprit d’équipe"
+        ]
       },
       {
-        "category": "Languages",
+        "category": "Langues",
         "skills": [
           "Chinese (Native)",
           "English (Professional)",
@@ -140,7 +212,7 @@
         ]
       }
     ],
-    "interests": ["Open Source", "AI/ML", "Hackathons", "Photography"],
+    "interests": ["Jeux videos", "Sport", "Apprendre"],
     "lastUpdate": "Last updated: November 2025"
   }
 }

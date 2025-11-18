@@ -1,6 +1,12 @@
-import React, { useRef, useEffect, useCallback, useState } from "react";
+import React, { useRef, useEffect, useState, useCallback } from "react";
 import { gsap } from "gsap";
-import "./MagicBento.css";
+import { FaReact } from "react-icons/fa";
+import { MdDashboard } from "react-icons/md";
+import { MdGroups } from "react-icons/md";
+import { MdAutoAwesome } from "react-icons/md";
+import { BiLink } from "react-icons/bi";
+import { MdSecurity } from "react-icons/md";
+import { FaEye } from "react-icons/fa";
 
 export interface BentoCardProps {
   color?: string;
@@ -9,6 +15,7 @@ export interface BentoCardProps {
   label?: string;
   textAutoHide?: boolean;
   disableAnimations?: boolean;
+  logo?: React.ReactNode;
 }
 
 export interface BentoProps {
@@ -36,36 +43,42 @@ const cardData: BentoCardProps[] = [
     title: "Analytics",
     description: "Track user behavior",
     label: "Insights",
+    logo: <FaEye />,
   },
   {
-    color: "var(--background-image)",
+    color: "var(--background)",
     title: "Dashboard",
     description: "Centralized data view",
     label: "Overview",
+    logo: <MdDashboard />,
   },
   {
-    color: "var(--background-image)",
+    color: "var(--background)",
     title: "Collaboration",
     description: "Work together seamlessly",
     label: "Teamwork",
+    logo: <MdGroups />,
   },
   {
-    color: "var(--background-image)",
+    color: "var(--background)",
     title: "Automation",
     description: "Streamline workflows",
     label: "Efficiency",
+    logo: <MdAutoAwesome />,
   },
   {
-    color: "var(--background-image)",
+    color: "var(--background)",
     title: "Integration",
     description: "Connect favorite tools",
     label: "Connectivity",
+    logo: <BiLink />,
   },
   {
-    color: "#060010",
+    color: "var(--background)",
     title: "Security",
     description: "Enterprise-grade protection",
     label: "Protection",
+    logo: <MdSecurity />,
   },
 ];
 
@@ -136,7 +149,7 @@ const ParticleCard: React.FC<{
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const particlesRef = useRef<HTMLDivElement[]>([]);
-  const timeoutsRef = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const timeoutsRef = useRef<number[]>([]);
   const isHoveredRef = useRef(false);
   const memoizedParticles = useRef<HTMLDivElement[]>([]);
   const particlesInitialized = useRef(false);
@@ -368,7 +381,7 @@ const ParticleCard: React.FC<{
   return (
     <div
       ref={cardRef}
-      className={`${className} particle-container`}
+      className={`${className} relative overflow-hidden`}
       style={{ ...style, position: "relative", overflow: "hidden" }}
     >
       {children}
@@ -531,7 +544,11 @@ const BentoCardGrid: React.FC<{
   children: React.ReactNode;
   gridRef?: React.RefObject<HTMLDivElement | null>;
 }> = ({ children, gridRef }) => (
-  <div className="card-grid bento-section" ref={gridRef}>
+  <div
+    className="bento-section grid gap-2 p-3 w-full select-none relative"
+    style={{ fontSize: "clamp(1rem, 0.9rem + 0.5vw, 1.5rem)" }}
+    ref={gridRef}
+  >
     {children}
   </div>
 );
@@ -571,6 +588,133 @@ const MagicBento: React.FC<BentoProps> = ({
 
   return (
     <>
+      <style>
+        {`
+          .bento-section {
+            --glow-x: 50%;
+            --glow-y: 50%;
+            --glow-intensity: 0;
+            --glow-radius: 200px;
+            --glow-color: ${glowColor};
+            --border-color: #392e4e;
+            --background-dark: #060010;
+            --white: hsl(0, 0%, 100%);
+            --purple-primary: rgba(132, 0, 255, 1);
+            --purple-glow: rgba(132, 0, 255, 0.2);
+            --purple-border: rgba(132, 0, 255, 0.8);
+          }
+          
+          .card-responsive {
+            grid-template-columns: 1fr;
+            width: 95%;
+            margin: 0 auto;
+            padding: 0rem;
+          }
+          
+          @media (min-width: 600px) {
+            .card-responsive {
+              grid-template-columns: repeat(2, 1fr);
+            }
+          }
+          
+          @media (min-width: 1024px) {
+            .card-responsive {
+              grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .card-responsive .card:nth-child(3) {
+              grid-column: span 2;
+              grid-row: span 2;
+            }
+            
+            .card-responsive .card:nth-child(4) {
+              grid-column: 1 / span 2;
+              grid-row: 2 / span 2;
+            }
+            
+            .card-responsive .card:nth-child(6) {
+              grid-column: 4;
+              grid-row: 3;
+            }
+          }
+          
+          .card--border-glow::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            padding: 6px;
+            background: radial-gradient(var(--glow-radius) circle at var(--glow-x) var(--glow-y),
+                rgba(${glowColor}, calc(var(--glow-intensity) * 0.8)) 0%,
+                rgba(${glowColor}, calc(var(--glow-intensity) * 0.4)) 30%,
+                transparent 60%);
+            border-radius: inherit;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: subtract;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+          }
+          
+          .card--border-glow:hover::after {
+            opacity: 1;
+          }
+          
+          .card--border-glow:hover {
+            box-shadow: 0 4px 20px rgba(46, 24, 78, 0.4), 0 0 30px rgba(${glowColor}, 0.2);
+          }
+          
+          .particle::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: rgba(${glowColor}, 0.2);
+            border-radius: 50%;
+            z-index: -1;
+          }
+          
+          .particle-container:hover {
+            box-shadow: 0 4px 20px rgba(46, 24, 78, 0.2), 0 0 30px rgba(${glowColor}, 0.2);
+          }
+          
+          .text-clamp-1 {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            line-clamp: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          
+          .text-clamp-2 {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          
+          @media (max-width: 599px) {
+            .card-responsive {
+              grid-template-columns: 1fr;
+              width: 90%;
+              margin: 0 auto;
+              padding: 0.5rem;
+            }
+            
+            .card-responsive .card {
+              width: 100%;
+              min-height: 180px;
+            }
+          }
+        `}
+      </style>
+
       {enableSpotlight && (
         <GlobalSpotlight
           gridRef={gridRef}
@@ -582,164 +726,209 @@ const MagicBento: React.FC<BentoProps> = ({
       )}
 
       <BentoCardGrid gridRef={gridRef}>
-        {cardData.map((card, index) => {
-          const baseClassName = `card ${
-            textAutoHide ? "card--text-autohide" : ""
-          } ${enableBorderGlow ? "card--border-glow" : ""}`;
-          const cardProps = {
-            className: baseClassName,
-            style: {
-              backgroundColor: card.color,
-              "--glow-color": glowColor,
-            } as React.CSSProperties,
-          };
+        <div className="card-responsive grid gap-2">
+          {cardData.map((card, index) => {
+            const baseClassName = `card flex flex-col justify-between relative min-h-[200px] w-full max-w-full p-5 rounded-[20px] border border-solid font-light overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)] ${
+              enableBorderGlow ? "card--border-glow" : ""
+            }`;
 
-          if (enableStars) {
+            const cardStyle = {
+              backgroundColor: card.color || "var(--background-dark)",
+              borderColor: "var(--border-color)",
+              color: "var(--white)",
+              "--glow-x": "50%",
+              "--glow-y": "50%",
+              "--glow-intensity": "0",
+              "--glow-radius": "200px",
+            } as React.CSSProperties;
+
+            if (enableStars) {
+              return (
+                <ParticleCard
+                  key={index}
+                  className={baseClassName}
+                  style={cardStyle}
+                  disableAnimations={shouldDisableAnimations}
+                  particleCount={particleCount}
+                  glowColor={glowColor}
+                  enableTilt={enableTilt}
+                  clickEffect={clickEffect}
+                  enableMagnetism={enableMagnetism}
+                >
+                  <div className="card__header flex justify-between gap-3 relative text-white ">
+                    <span className="card__label text-base">{card.label}</span>
+                  </div>
+                  <div className="card__content flex justify-center gap-2">
+                    {React.isValidElement(card.logo)
+                      ? React.cloneElement(
+                          card.logo as React.ReactElement<any>,
+                          {
+                            className: `${
+                              (card.logo as any).props?.className ?? ""
+                            } h-full w-full mx-20`.trim(),
+                          }
+                        )
+                      : card.logo}
+                  </div>
+                  <div className="card__content flex flex-col relative text-white">
+                    <h3
+                      className={`card__title font-normal text-base m-0 mb-1 ${
+                        textAutoHide ? "text-clamp-1" : ""
+                      }`}
+                    >
+                      {card.title}
+                    </h3>
+                    <p
+                      className={`card__description text-xs leading-5 opacity-90 ${
+                        textAutoHide ? "text-clamp-2" : ""
+                      }`}
+                    >
+                      {card.description}
+                    </p>
+                  </div>
+                </ParticleCard>
+              );
+            }
+
             return (
-              <ParticleCard
+              <div
                 key={index}
-                {...cardProps}
-                disableAnimations={shouldDisableAnimations}
-                particleCount={particleCount}
-                glowColor={glowColor}
-                enableTilt={enableTilt}
-                clickEffect={clickEffect}
-                enableMagnetism={enableMagnetism}
-              >
-                <div className="card__header">
-                  <div className="card__label">{card.label}</div>
-                </div>
-                <div className="card__content">
-                  <h2 className="card__title">{card.title}</h2>
-                  <p className="card__description">{card.description}</p>
-                </div>
-              </ParticleCard>
-            );
-          }
+                className={baseClassName}
+                style={cardStyle}
+                ref={(el) => {
+                  if (!el) return;
 
-          return (
-            <div
-              key={index}
-              {...cardProps}
-              ref={(el) => {
-                if (!el) return;
+                  const handleMouseMove = (e: MouseEvent) => {
+                    if (shouldDisableAnimations) return;
 
-                const handleMouseMove = (e: MouseEvent) => {
-                  if (shouldDisableAnimations) return;
+                    const rect = el.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
 
-                  const rect = el.getBoundingClientRect();
-                  const x = e.clientX - rect.left;
-                  const y = e.clientY - rect.top;
-                  const centerX = rect.width / 2;
-                  const centerY = rect.height / 2;
+                    if (enableTilt) {
+                      const rotateX = ((y - centerY) / centerY) * -10;
+                      const rotateY = ((x - centerX) / centerX) * 10;
 
-                  if (enableTilt) {
-                    const rotateX = ((y - centerY) / centerY) * -10;
-                    const rotateY = ((x - centerX) / centerX) * 10;
-                    gsap.to(el, {
-                      rotateX,
-                      rotateY,
-                      duration: 0.1,
-                      ease: "power2.out",
-                      transformPerspective: 1000,
-                    });
-                  }
-
-                  if (enableMagnetism) {
-                    const magnetX = (x - centerX) * 0.05;
-                    const magnetY = (y - centerY) * 0.05;
-                    gsap.to(el, {
-                      x: magnetX,
-                      y: magnetY,
-                      duration: 0.3,
-                      ease: "power2.out",
-                    });
-                  }
-                };
-
-                const handleMouseLeave = () => {
-                  if (shouldDisableAnimations) return;
-
-                  if (enableTilt) {
-                    gsap.to(el, {
-                      rotateX: 0,
-                      rotateY: 0,
-                      duration: 0.3,
-                      ease: "power2.out",
-                    });
-                  }
-
-                  if (enableMagnetism) {
-                    gsap.to(el, {
-                      x: 0,
-                      y: 0,
-                      duration: 0.3,
-                      ease: "power2.out",
-                    });
-                  }
-                };
-
-                const handleClick = (e: MouseEvent) => {
-                  if (!clickEffect || shouldDisableAnimations) return;
-
-                  const rect = el.getBoundingClientRect();
-                  const x = e.clientX - rect.left;
-                  const y = e.clientY - rect.top;
-
-                  // Calculate the maximum distance from click point to any corner
-                  const maxDistance = Math.max(
-                    Math.hypot(x, y),
-                    Math.hypot(x - rect.width, y),
-                    Math.hypot(x, y - rect.height),
-                    Math.hypot(x - rect.width, y - rect.height)
-                  );
-
-                  const ripple = document.createElement("div");
-                  ripple.style.cssText = `
-                    position: absolute;
-                    width: ${maxDistance * 2}px;
-                    height: ${maxDistance * 2}px;
-                    border-radius: 50%;
-                    background: radial-gradient(circle, rgba(${glowColor}, 0.4) 0%, rgba(${glowColor}, 0.2) 30%, transparent 70%);
-                    left: ${x - maxDistance}px;
-                    top: ${y - maxDistance}px;
-                    pointer-events: none;
-                    z-index: 1000;
-                  `;
-
-                  el.appendChild(ripple);
-
-                  gsap.fromTo(
-                    ripple,
-                    {
-                      scale: 0,
-                      opacity: 1,
-                    },
-                    {
-                      scale: 1,
-                      opacity: 0,
-                      duration: 0.8,
-                      ease: "power2.out",
-                      onComplete: () => ripple.remove(),
+                      gsap.to(el, {
+                        rotateX,
+                        rotateY,
+                        duration: 0.1,
+                        ease: "power2.out",
+                        transformPerspective: 1000,
+                      });
                     }
-                  );
-                };
 
-                el.addEventListener("mousemove", handleMouseMove);
-                el.addEventListener("mouseleave", handleMouseLeave);
-                el.addEventListener("click", handleClick);
-              }}
-            >
-              <div className="card__header">
-                <div className="card__label">{card.label}</div>
+                    if (enableMagnetism) {
+                      const magnetX = (x - centerX) * 0.05;
+                      const magnetY = (y - centerY) * 0.05;
+
+                      gsap.to(el, {
+                        x: magnetX,
+                        y: magnetY,
+                        duration: 0.3,
+                        ease: "power2.out",
+                      });
+                    }
+                  };
+
+                  const handleMouseLeave = () => {
+                    if (shouldDisableAnimations) return;
+
+                    if (enableTilt) {
+                      gsap.to(el, {
+                        rotateX: 0,
+                        rotateY: 0,
+                        duration: 0.3,
+                        ease: "power2.out",
+                      });
+                    }
+
+                    if (enableMagnetism) {
+                      gsap.to(el, {
+                        x: 0,
+                        y: 0,
+                        duration: 0.3,
+                        ease: "power2.out",
+                      });
+                    }
+                  };
+
+                  const handleClick = (e: MouseEvent) => {
+                    if (!clickEffect || shouldDisableAnimations) return;
+
+                    const rect = el.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    const maxDistance = Math.max(
+                      Math.hypot(x, y),
+                      Math.hypot(x - rect.width, y),
+                      Math.hypot(x, y - rect.height),
+                      Math.hypot(x - rect.width, y - rect.height)
+                    );
+
+                    const ripple = document.createElement("div");
+                    ripple.style.cssText = `
+                      position: absolute;
+                      width: ${maxDistance * 2}px;
+                      height: ${maxDistance * 2}px;
+                      border-radius: 50%;
+                      background: radial-gradient(circle, rgba(${glowColor}, 0.4) 0%, rgba(${glowColor}, 0.2) 30%, transparent 70%);
+                      left: ${x - maxDistance}px;
+                      top: ${y - maxDistance}px;
+                      pointer-events: none;
+                      z-index: 1000;
+                    `;
+
+                    el.appendChild(ripple);
+
+                    gsap.fromTo(
+                      ripple,
+                      {
+                        scale: 0,
+                        opacity: 1,
+                      },
+                      {
+                        scale: 1,
+                        opacity: 0,
+                        duration: 0.8,
+                        ease: "power2.out",
+                        onComplete: () => ripple.remove(),
+                      }
+                    );
+                  };
+
+                  el.addEventListener("mousemove", handleMouseMove);
+                  el.addEventListener("mouseleave", handleMouseLeave);
+                  el.addEventListener("click", handleClick);
+                }}
+              >
+                <div className="card__header flex justify-between gap-3 relative text-white">
+                  <span className="card__label text-base">{card.label}</span>
+                </div>
+
+                <div className="card__content flex flex-col relative text-white">
+                  <h3
+                    className={`card__title font-normal text-base m-0 mb-1 ${
+                      textAutoHide ? "text-clamp-1" : ""
+                    }`}
+                  >
+                    {card.title}
+                  </h3>
+                  <p
+                    className={`card__description text-xs leading-5 opacity-90 ${
+                      textAutoHide ? "text-clamp-2" : ""
+                    }`}
+                  >
+                    {card.description}
+                  </p>
+                </div>
               </div>
-              <div className="card__content">
-                <h2 className="card__title">{card.title}</h2>
-                <p className="card__description">{card.description}</p>
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </BentoCardGrid>
     </>
   );

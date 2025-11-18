@@ -7,7 +7,9 @@ import {
   CircleIcon,
   CircleCheckIcon,
   Home,
+  OptionIcon,
 } from "lucide-react";
+import { GrSettingsOption } from "react-icons/gr";
 import {
   NavigationMenu,
   NavigationMenuList,
@@ -39,15 +41,12 @@ import {
 import { useTranslation } from "react-i18next";
 import { LangToggle } from "../i18n/lang-toggle";
 import { ModeToggle } from "../themeMode/mode-toggle";
+import { Separator } from "@radix-ui/react-dropdown-menu";
 
 const NavLayer: React.FC = () => {
   const { t } = useTranslation();
 
-  const langChange = (lang: string) => {
-    localStorage.setItem("lang", lang);
-  };
-
-  const nav = [
+  const navPages = [
     {
       item: (
         <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
@@ -69,26 +68,30 @@ const NavLayer: React.FC = () => {
         </NavigationMenuLink>
       ),
     },
+  ];
+  const navOptions = [
     {
       item: (
         <Popover>
-          <PopoverTrigger>{t("param")}</PopoverTrigger>
+          <PopoverTrigger asChild className={navigationMenuTriggerStyle()}>
+            <div className="grid-cols-2 gap-1 items-center">
+              <GrSettingsOption />
+              <span>{t("param")}</span>
+            </div>
+          </PopoverTrigger>
           <PopoverContent>
             <div className="grid gap-4">
               <div className="grid grid-cols-3 items-center gap-4">
-                <span popoverTarget="lang" className="col-span-1">
-                  {t("lang")}
-                </span>
-                <div id="lang" className="col-span-2">
+                <span className="col-span-1">{t("lang")}</span>
+                <div className="col-span-2">
                   <LangToggle />
                 </div>
               </div>
               <div className="grid grid-cols-3 items-center gap-4">
-                <span popoverTarget="theme">{t("theme")}</span>
-                <div id="lang" className="col-span-1 justify-center">
+                <span>{t("theme")}</span>
+                <div className="col-span-1 justify-center">
                   <ModeToggle />
                 </div>
-
               </div>
             </div>
           </PopoverContent>
@@ -98,13 +101,23 @@ const NavLayer: React.FC = () => {
   ];
 
   return (
-    <div className="flex h-screen w-screen flex-col sticky">
+    <div className="flex h-screen w-screen flex-col sticky bg-background text-foreground">
       <main className="flex-1 overflow-auto">
-        <div className="flex justify-center bg-background">
+        <div className="flex justify-center bg-background ">
           <NavigationMenu>
-            <NavigationMenuList className="flex-wrap bg-transparent border border-green-600">
-              {nav.map((elt) => (
-                <NavigationMenuItem>{elt.item}</NavigationMenuItem>
+            <NavigationMenuList className="flex-wrap bg-transparent dark:bg-transparent">
+              {navPages.map((elt) => (
+                <NavigationMenuItem key={elt.item?.toString()}>
+                  {elt.item}
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+
+            <NavigationMenuList className="flex-wrap bg-transparent dark:bg-transparent ml-5">
+              {navOptions.map((elt) => (
+                <NavigationMenuItem key={elt.item?.toString()}>
+                  {elt.item}
+                </NavigationMenuItem>
               ))}
             </NavigationMenuList>
           </NavigationMenu>

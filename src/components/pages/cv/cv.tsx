@@ -20,8 +20,8 @@ export default function Cv() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.1,
+        staggerChildren: 0.05,
+        delayChildren: 0.05,
       },
     },
   };
@@ -31,7 +31,7 @@ export default function Cv() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.3, ease: "easeInOut" },
+      transition: { duration: 0.1, ease: "easeInOut" },
     },
   };
 
@@ -86,7 +86,7 @@ export default function Cv() {
   }) as CvTranslation;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 md:p-8 flex justify-center">
+    <div className="min-h-screen bg-background md:p-8 flex justify-center text-foreground">
       <GradualBlur
         target="parent"
         position="bottom"
@@ -101,12 +101,12 @@ export default function Cv() {
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        className="w-full max-w-[1200px] bg-white rounded-2xl shadow-2xl p-8 md:p-12"
+        className="w-full max-w-[1200px] bg-card text-card-foreground rounded-2xl shadow-2xl p-8 md:p-12"
       >
         {/* Header */}
-        <div className="grid md:grid-cols-[auto_1fr] gap-8 mb-8 pb-8 border-b border-gray-200">
+        <div className="grid md:grid-cols-[auto_1fr] gap-8 mb-8 pb-8 border-b border-border">
           <motion.div variants={itemVariants}>
-            <Avatar className="h-32 w-32 ring-4 ring-cv-decoration/20">
+            <Avatar className="h-32 w-32 ring-4 ring-primary/20">
               <AvatarImage
                 src="/assets/Photos/Changrui2.jpg"
                 alt="Profile"
@@ -119,19 +119,19 @@ export default function Cv() {
           <div className="flex flex-col justify-center leading-tight">
             <motion.h1
               variants={itemVariants}
-              className="text-[42px] leading-tight mb-2 text-cv-text-primary font-bold"
+              className="text-[42px] leading-tight mb-2 text-foreground font-bold"
             >
               {cv.profile.name}
             </motion.h1>
             <motion.p
               variants={itemVariants}
-              className="text-[20px] text-cv-decoration mb-4"
+              className="text-[20px] text-primary mb-4"
             >
               {cv.profile.role}
             </motion.p>
             <motion.div
               variants={itemVariants}
-              className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[14px] text-cv-text-tertiary"
+              className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[14px] text-muted-foreground"
               leading-tight
             >
               <div className="flex items-center gap-2">
@@ -153,7 +153,7 @@ export default function Cv() {
                   href="https://www.linkedin.com/in/changrui-zhang/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-cv-decoration transition-colors"
+                  className="hover:text-[var(--color-cv-decoration)] transition-colors"
                 >
                   {cv.profile.linkedin}
                 </a>
@@ -164,7 +164,7 @@ export default function Cv() {
                   href="https://github.com/Changrui-ZHANG"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-cv-decoration transition-colors"
+                  className="hover:text-[var(--color-cv-decoration)] transition-colors"
                 >
                   {cv.profile.github}
                 </a>
@@ -179,19 +179,19 @@ export default function Cv() {
           <div className="space-y-6  leading-tight">
             {/* About */}
             <motion.div variants={itemVariants}>
-              <h2 className="text-[18px] flex items-center gap-2 mb-3 text-cv-text-primary">
-                <Award className="h-5 w-5 text-cv-decoration" />
+              <h2 className="text-[18px] flex items-center gap-2 mb-3 text-foreground">
+                <Award className="h-5 w-5 text-[var(--color-cv-decoration)]" />
                 {cv.profileStr}
               </h2>
-              <div className="text-[14px] text-cv-text-secondary leading-relaxed indent-8">
+              <div className="text-[14px] text-secondary-foreground leading-relaxed indent-8">
                 <p>{cv.profile.aboutMe}</p>
               </div>
             </motion.div>
 
             {/* Experience */}
             <motion.div variants={itemVariants}>
-              <h2 className="text-[18px] flex items-center gap-2 mb-3 text-cv-text-primary">
-                <Briefcase className="h-5 w-5 text-cv-decoration" />
+              <h2 className="text-[18px] flex items-center gap-2 mb-3 text-foreground">
+                <Briefcase className="h-5 w-5 text-[var(--color-cv-decoration)]" />
                 {cv.experiencesStr}
               </h2>
               <div className="space-y-4">
@@ -200,35 +200,43 @@ export default function Cv() {
                     key={idx}
                     variants={itemVariants}
                     whileHover={{ x: 4 }}
-                    className="border-l-2 border-cv-decoration pl-4"
+                    className="border-l-2 border-[var(--color-cv-decoration)] dark:border-[var(--color-cv-decoration)] pl-4"
                   >
                     <div className="flex justify-between items-start">
-                      <h2 className="text-[15px] text-black">{exp.role}</h2>
-                      <span className="text-[12px] text-cv-text-tertiary whitespace-nowrap ml-2">
+                      <h2 className="text-[15px] text-foreground">
+                        {exp.role}
+                      </h2>
+                      <span className="text-[12px] text-muted-foreground whitespace-nowrap ml-2">
                         {exp.period}
                       </span>
                     </div>
                     <div className="flex justify-between items-start italic pb-2 pt-1">
-                      <p className="text-[13px] text-cv-text-tertiary">
+                      <p className="text-[13px] text-muted-foreground">
                         {exp.company}
                       </p>
-                      <span className="text-[12px] text-cv-text-tertiary ml-2">
+                      <span className="text-[12px] text-muted-foreground ml-2">
                         {exp.location}
                       </span>
                     </div>
                     <ul className="space-y-1">
                       {exp.achievements.map((achievement, i) => (
                         <li key={i} className="text-[12px]  flex items-start">
-                          <span className="text-cv-decoration">•</span>
-                          <span className="pl-1 text-cv-text-secondary">
+                          <span className="text-[var(--color-cv-decoration)]">
+                            •
+                          </span>
+                          <span className="pl-1 text-secondary-foreground">
                             {achievement}
                           </span>
                         </li>
                       ))}
                       <li className="text-[12px]  flex items-start">
-                        <span className="text-cv-decoration">•</span>
+                        <span className="text-[var(--color-cv-decoration)]">
+                          •
+                        </span>
                         <span className="pl-1 space-x-1 flex flex-wrap">
-                          <span className="text-cv-text-secondary">techs:</span>
+                          <span className="text-secondary-foreground">
+                            techs:
+                          </span>
                           {exp.techs.map((tech) => (
                             <motion.div
                               key={tech}
@@ -241,7 +249,7 @@ export default function Cv() {
                             >
                               <Badge
                                 key={tech}
-                                className="px-1.5 py-px h-fit bg-transparent border border-b-cv-decoration border-r-cv-decoration text-cv-text-secondary"
+                                className="px-1.5 py-px h-fit bg-transparent border border-b-[var(--color-cv-decoration)] border-r-[var(--color-cv-decoration)] text-secondary-foreground"
                               >
                                 {tech}
                               </Badge>
@@ -257,8 +265,8 @@ export default function Cv() {
 
             {/* Education */}
             <motion.div variants={itemVariants}>
-              <h2 className="text-[18px] flex items-center gap-2 mb-3 text-cv-text-primary">
-                <GraduationCap className="h-5 w-5 text-cv-decoration" />
+              <h2 className="text-[18px] flex items-center gap-2 mb-3 text-foreground">
+                <GraduationCap className="h-5 w-5 text-[var(--color-cv-decoration)]" />
                 {cv.educationsStr}
               </h2>
               <div className="space-y-3">
@@ -267,18 +275,18 @@ export default function Cv() {
                     key={idx}
                     variants={itemVariants}
                     whileHover={{ x: 4 }}
-                    className="border-l-2 border-cv-decoration pl-4"
+                    className="border-l-2 border-[var(--color-cv-decoration)] pl-4"
                   >
-                    <h3 className="text-[15px] text-cv-text-primary">
+                    <h3 className="text-[15px] text-foreground">
                       {edu.degree}
                       {edu.field && (
-                        <span className="text-[13px] text-cv-text-secondary">
+                        <span className="text-[13px] text-secondary-foreground">
                           : {edu.field}
                         </span>
                       )}
                     </h3>
 
-                    <div className="flex justify-between items-center italic text-cv-text-tertiary">
+                    <div className="flex justify-between items-center italic text-muted-foreground">
                       <p className="text-[12px] ">{edu.school}</p>
                       <span className="text-[12px] ">{edu.period}</span>
                     </div>
@@ -289,17 +297,17 @@ export default function Cv() {
           </div>
 
           {/* Right Column */}
-          <div className="space-y-6 border-l border-gray-200 pl-6">
+          <div className="space-y-6 border-l border-border pl-6">
             {/* Skills */}
             <motion.div variants={itemVariants}>
-              <h2 className="text-[18px] flex items-center gap-2 mb-3 text-cv-text-primary">
-                <Code className="h-5 w-5 text-cv-decoration" />
+              <h2 className="text-[18px] flex items-center gap-2 mb-3 text-foreground">
+                <Code className="h-5 w-5 text-[var(--color-cv-decoration)]" />
                 {cv.skillsStr}
               </h2>
               <div className="space-y-4">
                 {cv.skills.map((category, idx) => (
                   <motion.div key={idx} variants={itemVariants}>
-                    <h3 className="text-[14px] mb-4 mt-4 text-cv-text-primary">
+                    <h3 className="text-[14px] mb-4 mt-4 text-foreground">
                       {category.category}
                     </h3>
                     <div className="flex flex-wrap gap-1.5">
@@ -315,7 +323,7 @@ export default function Cv() {
                         >
                           <Badge
                             variant="secondary"
-                            className="text-cv-text-secondary bg-cv-badge border-cv-decoration"
+                            className="text-secondary-foreground bg-transparent border-cv-decoration"
                           >
                             {skill}
                           </Badge>
@@ -329,8 +337,8 @@ export default function Cv() {
 
             {/* Interests */}
             <motion.div variants={itemVariants}>
-              <h2 className="text-[18px] flex items-center gap-2 mb-3 text-cv-text-primary">
-                <Github className="h-5 w-5 text-cv-decoration" />
+              <h2 className="text-[18px] flex items-center gap-2 mb-3 text-foreground">
+                <Github className="h-5 w-5 text-[var(--color-cv-decoration)]" />
                 {cv.interestsStr}
               </h2>
               <div className="flex flex-wrap gap-1.5">
@@ -346,7 +354,7 @@ export default function Cv() {
                   >
                     <Badge
                       variant="outline"
-                      className="text-cv-text-secondary border-cv-decoration"
+                      className="text-secondary-foreground border-[var(--color-cv-decoration)]"
                     >
                       {interest}
                     </Badge>
@@ -360,7 +368,7 @@ export default function Cv() {
         {/* Footer */}
         <motion.div
           variants={itemVariants}
-          className="mt-8 pt-6 border-t border-cv-badge-bg text-center text-[11px] text-cv-text-tertiary"
+          className="mt-8 pt-6 border-t border-border text-center text-[11px] text-muted-foreground"
         >
           Last updated: November 2025
         </motion.div>
