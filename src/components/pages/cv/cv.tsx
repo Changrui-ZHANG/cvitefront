@@ -13,7 +13,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { useTranslation, Trans } from "react-i18next";
-import GradualBlur from "@/components/reactBits/animations/gradualBlur/gradualBlur";
+import GradualBlur from "@/components/reactBits/animations/gradualBlur/GradualBlur";
 export default function Cv() {
   const containerVariants = {
     hidden: { opacity: 0 },
