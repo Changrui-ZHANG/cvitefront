@@ -14,6 +14,8 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { useTranslation, Trans } from "react-i18next";
 import GradualBlur from "@/components/reactBits/animations/gradualBlur/GradualBlur";
+import GlareHover from "@/components/reactBits/animations/glareHover/GlareHover";
+import GradientText from "@/components/reactBits/textAnimations/gradientText/GradientText";
 export default function Cv() {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -112,7 +114,7 @@ export default function Cv() {
                 alt="Profile"
                 className="object-cover h-full w-full"
               />
-              <AvatarFallback>CZ</AvatarFallback>
+              <AvatarFallback>Changrui</AvatarFallback>
             </Avatar>
           </motion.div>
 
@@ -172,7 +174,6 @@ export default function Cv() {
             </motion.div>
           </div>
         </div>
-
         {/* Main Content - 2 Columns */}
         <div className="grid md:grid-cols-[2fr_1fr] gap-8">
           {/* Left Column */}

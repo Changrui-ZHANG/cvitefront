@@ -7,7 +7,6 @@ import { MdAutoAwesome } from "react-icons/md";
 import { BiLink } from "react-icons/bi";
 import { MdSecurity } from "react-icons/md";
 import { FaEye } from "react-icons/fa";
-
 export interface BentoCardProps {
   color?: string;
   title?: string;
@@ -37,50 +36,7 @@ const DEFAULT_SPOTLIGHT_RADIUS = 300;
 const DEFAULT_GLOW_COLOR = "132, 0, 255";
 const MOBILE_BREAKPOINT = 768;
 
-const cardData: BentoCardProps[] = [
-  {
-    color: "var(--background)",
-    title: "Analytics",
-    description: "Track user behavior",
-    label: "Insights",
-    logo: <FaEye />,
-  },
-  {
-    color: "var(--background)",
-    title: "Dashboard",
-    description: "Centralized data view",
-    label: "Overview",
-    logo: <MdDashboard />,
-  },
-  {
-    color: "var(--background)",
-    title: "Collaboration",
-    description: "Work together seamlessly",
-    label: "Teamwork",
-    logo: <MdGroups />,
-  },
-  {
-    color: "var(--background)",
-    title: "Automation",
-    description: "Streamline workflows",
-    label: "Efficiency",
-    logo: <MdAutoAwesome />,
-  },
-  {
-    color: "var(--background)",
-    title: "Integration",
-    description: "Connect favorite tools",
-    label: "Connectivity",
-    logo: <BiLink />,
-  },
-  {
-    color: "var(--background)",
-    title: "Security",
-    description: "Enterprise-grade protection",
-    label: "Protection",
-    logo: <MdSecurity />,
-  },
-];
+import { useTranslation } from "react-i18next";
 
 const createParticleElement = (
   x: number,
@@ -585,6 +541,52 @@ const MagicBento: React.FC<BentoProps> = ({
   const gridRef = useRef<HTMLDivElement>(null);
   const isMobile = useMobileDetection();
   const shouldDisableAnimations = disableAnimations || isMobile;
+  const { t } = useTranslation();
+
+  const cardData: BentoCardProps[] = [
+    {
+      color: "var(--background)",
+      title: t("magicBento.cards.analytics.title"),
+      description: t("magicBento.cards.analytics.description"),
+      label: t("magicBento.cards.analytics.label"),
+      logo: <FaEye />,
+    },
+    {
+      color: "var(--background)",
+      title: t("magicBento.cards.dashboard.title"),
+      description: t("magicBento.cards.dashboard.description"),
+      label: t("magicBento.cards.dashboard.label"),
+      logo: <MdDashboard />,
+    },
+    {
+      color: "var(--background)",
+      title: t("magicBento.cards.collaboration.title"),
+      description: t("magicBento.cards.collaboration.description"),
+      label: t("magicBento.cards.collaboration.label"),
+      logo: <MdGroups />,
+    },
+    {
+      color: "var(--background)",
+      title: t("magicBento.cards.automation.title"),
+      description: t("magicBento.cards.automation.description"),
+      label: t("magicBento.cards.automation.label"),
+      logo: <MdAutoAwesome />,
+    },
+    {
+      color: "var(--background)",
+      title: t("magicBento.cards.integration.title"),
+      description: t("magicBento.cards.integration.description"),
+      label: t("magicBento.cards.integration.label"),
+      logo: <BiLink />,
+    },
+    {
+      color: "var(--background)",
+      title: t("magicBento.cards.security.title"),
+      description: t("magicBento.cards.security.description"),
+      label: t("magicBento.cards.security.label"),
+      logo: <MdSecurity />,
+    },
+  ];
 
   return (
     <>
@@ -596,9 +598,10 @@ const MagicBento: React.FC<BentoProps> = ({
             --glow-intensity: 0;
             --glow-radius: 200px;
             --glow-color: ${glowColor};
-            --border-color: #392e4e;
-            --background-dark: #060010;
-            --white: hsl(0, 0%, 100%);
+            /* use global theme variables so this component follows light/dark */
+            --border-color: var(--border);
+            --background-dark: var(--card);
+            --white: var(--card-foreground);
             --purple-primary: rgba(132, 0, 255, 1);
             --purple-glow: rgba(132, 0, 255, 0.2);
             --purple-border: rgba(132, 0, 255, 0.8);
@@ -733,9 +736,9 @@ const MagicBento: React.FC<BentoProps> = ({
             }`;
 
             const cardStyle = {
-              backgroundColor: card.color || "var(--background-dark)",
+              backgroundColor: card.color || "var(--card)",
               borderColor: "var(--border-color)",
-              color: "var(--white)",
+              color: "var(--card-foreground)",
               "--glow-x": "50%",
               "--glow-y": "50%",
               "--glow-intensity": "0",
@@ -755,7 +758,7 @@ const MagicBento: React.FC<BentoProps> = ({
                   clickEffect={clickEffect}
                   enableMagnetism={enableMagnetism}
                 >
-                  <div className="card__header flex justify-between gap-3 relative text-white ">
+                  <div className="card__header flex justify-between gap-3 relative text-[var(--card-foreground)] ">
                     <span className="card__label text-base">{card.label}</span>
                   </div>
                   <div className="card__content flex justify-center gap-2">
@@ -766,11 +769,12 @@ const MagicBento: React.FC<BentoProps> = ({
                             className: `${
                               (card.logo as any).props?.className ?? ""
                             } h-full w-full mx-20`.trim(),
+                            style: { color: "var(--foreground)" },
                           }
                         )
                       : card.logo}
                   </div>
-                  <div className="card__content flex flex-col relative text-white">
+                  <div className="card__content flex flex-col relative text-[var(--card-foreground)]">
                     <h3
                       className={`card__title font-normal text-base m-0 mb-1 ${
                         textAutoHide ? "text-clamp-1" : ""
@@ -905,11 +909,11 @@ const MagicBento: React.FC<BentoProps> = ({
                   el.addEventListener("click", handleClick);
                 }}
               >
-                <div className="card__header flex justify-between gap-3 relative text-white">
+                <div className="card__header flex justify-between gap-3 relative text-[var(--card-foreground)]">
                   <span className="card__label text-base">{card.label}</span>
                 </div>
 
-                <div className="card__content flex flex-col relative text-white">
+                <div className="card__content flex flex-col relative text-[var(--card-foreground)]">
                   <h3
                     className={`card__title font-normal text-base m-0 mb-1 ${
                       textAutoHide ? "text-clamp-1" : ""

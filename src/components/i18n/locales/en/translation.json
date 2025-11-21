@@ -13,6 +13,45 @@
   "param": "Settings",
   "theme": "Theme",
 
+  "magicBento": {
+    "cards": {
+      "analytics": {
+        "title": "Analytics",
+        "description": "Track user behavior",
+        "label": "Insights"
+      },
+      "dashboard": {
+        "title": "Dashboard",
+        "description": "Centralized data view",
+        "label": "Overview"
+      },
+      "collaboration": {
+        "title": "Collaboration",
+        "description": "Work together seamlessly",
+        "label": "Teamwork"
+      },
+      "automation": {
+        "title": "Automation",
+        "description": "Streamline workflows",
+        "label": "Efficiency"
+      },
+      "integration": {
+        "title": "Integration",
+        "description": "Connect favorite tools",
+        "label": "Connectivity"
+      },
+      "security": {
+        "title": "Security",
+        "description": "Enterprise-grade protection",
+        "label": "Protection"
+      }
+    }
+  },
+  "footer": {
+    "copyrightPrefix": "© {{year}} ",
+    "copyrightSuffix": ". All Rights Reserved."
+  },
+
   "cvObject": {
     "educationsStr": "Education",
     "experiencesStr": "Experience",

@@ -17,6 +17,8 @@ import {
 } from "react-icons/si";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { LaserFlow } from "@/components/reactBits/animations/laserFlow/LaserFlow";
+import GradientText from "@/components/reactBits/textAnimations/gradientText/GradientText";
 /*logo loop component*/
 const techLogos = [
   { node: <SiReact />, title: "React", href: "https://react.dev" },
@@ -77,7 +79,6 @@ const Home: React.FC = () => {
               </Button>
             </div>
           </div>
-          {/* 
           <div className="flex items-center justify-center w-full">
             <div className="w-full max-w-[360px]">
               <ModelViewer
@@ -89,10 +90,10 @@ const Home: React.FC = () => {
                 autoRotate={true}
               />
             </div>
-          </div>*/}
+          </div>
         </section>
 
-        <div className="flex justify-center">
+        <div className="flex-col justify-center">
           <MagicBento
             textAutoHide
             enableStars
@@ -117,7 +118,7 @@ const Home: React.FC = () => {
             pauseOnHover
             scaleOnHover
             fadeOut
-            fadeOutColor="#ffffff"
+            fadeOutColor="var(--background)"
             ariaLabel="Technology partners"
           />
         </section>

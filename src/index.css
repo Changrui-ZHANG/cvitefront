@@ -57,6 +57,8 @@
   --spacing: 0.25rem;
 
   --color-cv-decoration: #004df2; 
+
+  --test-clor: rgb(15, 231, 0);
 } 
 
 .dark {

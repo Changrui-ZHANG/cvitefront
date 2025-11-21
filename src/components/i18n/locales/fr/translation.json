@@ -15,6 +15,45 @@
   "param": "Paramètre",
   "theme": "Thème",
 
+  "magicBento": {
+    "cards": {
+      "analytics": {
+        "title": "Analytique",
+        "description": "Suivre le comportement des utilisateurs",
+        "label": "Insights"
+      },
+      "dashboard": {
+        "title": "Tableau de bord",
+        "description": "Vue centralisée des données",
+        "label": "Aperçu"
+      },
+      "collaboration": {
+        "title": "Collaboration",
+        "description": "Travailler ensemble sans friction",
+        "label": "Travail d'équipe"
+      },
+      "automation": {
+        "title": "Automatisation",
+        "description": "Rationaliser les flux de travail",
+        "label": "Efficacité"
+      },
+      "integration": {
+        "title": "Intégration",
+        "description": "Connecter vos outils favoris",
+        "label": "Connectivité"
+      },
+      "security": {
+        "title": "Sécurité",
+        "description": "Protection de niveau entreprise",
+        "label": "Protection"
+      }
+    }
+  },
+  "footer": {
+    "copyrightPrefix": "© {{year}} ",
+    "copyrightSuffix": ". Tous droits réservés."
+  },
+
   "cvObject": {
     "educationsStr": "Education",
     "experiencesStr": "Expériences",
