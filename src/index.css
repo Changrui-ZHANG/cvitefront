@@ -181,11 +181,23 @@
 
 @layer base {
   body {
-    @apply h-full  bg-[linear-gradient(var(--background-image))]  leading-1;
+    @apply h-full leading-1 ;
   }
   html{
     @apply h-full;
   }
+}
+
+/* Prevent horizontal overflow and ensure consistent box sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  background: var(--color-background);
+  overflow-x: hidden;
+  overscroll-behavior: contain;
 }
   /*
   --silver1: linear-gradient(45deg,#707072, #CDCED2, #FCFCFE, #D0D1D6, #818286, #A1A1A3);

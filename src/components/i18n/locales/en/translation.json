@@ -47,6 +47,23 @@
       }
     }
   },
+  "homeObject": {
+    "seeCv": "See my CV",
+    "seeDemos": "See demos",
+    "available": "Available for opportunities — Contact me",
+    "logoAria": "Technology partners"
+  },
+  "commandPalette": {
+    "label": "Command Menu",
+    "placeholder": "Type a command or search...",
+    "empty": "No results found.",
+    "navigationGroup": "Navigation",
+    "actionsGroup": "Actions",
+    "toggleTheme": "Toggle Theme",
+    "switchLang": "Switch to",
+    "hint_pre": "Pro-tip: Press",
+    "hint_post": "to open the command palette."
+  },
   "footer": {
     "copyrightPrefix": "© {{year}} ",
     "copyrightSuffix": ". All Rights Reserved."

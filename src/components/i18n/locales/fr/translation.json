@@ -8,8 +8,6 @@
   "cv": "Cv",
   "home": "Home",
   "index": "Index",
-  "fr": "Français",
-  "en": "Anglais",
   "lang": "LanguageFr",
   "langs": "LanguagesFr",
   "param": "Paramètre",
@@ -48,6 +46,23 @@
         "label": "Protection"
       }
     }
+  },
+  "homeObject": {
+    "seeCv": "Voir mon CV",
+    "seeDemos": "Voir les démos",
+    "available": "Disponible pour opportunités — Contactez-moi",
+    "logoAria": "Partenaires technologiques"
+  },
+  "commandPalette": {
+    "label": "Menu de Commandes",
+    "placeholder": "Tapez une commande ou recherchez...",
+    "empty": "Aucun résultat trouvé.",
+    "navigationGroup": "Navigation",
+    "actionsGroup": "Actions",
+    "toggleTheme": "Changer de Thème",
+    "switchLang": "Passer en",
+    "hint_pre": "Astuce : Appuyez sur",
+    "hint_post": "pour ouvrir la palette de commandes."
   },
   "footer": {
     "copyrightPrefix": "© {{year}} ",

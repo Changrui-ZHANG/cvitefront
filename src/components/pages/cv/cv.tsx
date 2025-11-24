@@ -88,17 +88,19 @@ export default function Cv() {
   }) as CvTranslation;
 
   return (
-    <div className="min-h-screen bg-background md:p-8 flex justify-center text-foreground">
+    <div className="min-h-screen  md:p-8 flex justify-center text-foreground">
       <GradualBlur
-        target="parent"
+        target="page"
         position="bottom"
         height="4rem"
-        strength={2}
+        strength={5}
         divCount={1}
         curve="linear"
         exponential={true}
         opacity={1}
+        className="fixed bottom-0 w-full"
       />
+
       <motion.div
         initial="hidden"
         animate="visible"

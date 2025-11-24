@@ -103,8 +103,8 @@ const NavLayer: React.FC = () => {
 
   return (
     <div className="flex h-screen w-screen flex-col sticky bg-background text-foreground">
-      <main className="flex-1 overflow-auto">
-        <header className="flex justify-center bg-background ">
+      <main className="flex-1 flex flex-col">
+        <div className="flex justify-center bg-background ">
           <NavigationMenu>
             <NavigationMenuList className="flex-wrap bg-transparent dark:bg-transparent">
               {navPages.map((elt) => (
@@ -122,11 +122,11 @@ const NavLayer: React.FC = () => {
               ))}
             </NavigationMenuList>
           </NavigationMenu>
-        </header>
+        </div>
 
         <Outlet />
 
-        <footer className="bg-neutral-primary">
+        <div className="bg-background">
           <div className="mx-auto w-full max-w-screen-xl">
             {/* 
             <div className="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
@@ -311,7 +311,7 @@ const NavLayer: React.FC = () => {
               </div>
             </div>
           </div>
-        </footer>
+        </div>
       </main>
     </div>
   );

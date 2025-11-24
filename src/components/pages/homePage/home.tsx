@@ -1,5 +1,4 @@
 import MagicBento from "@/components/reactBits/animations/magicBento/MagicBento";
-import LogoLoop from "@/components/reactBits/animations/logoLoop/LogoLoop";
 import { ModeToggle } from "@/components/themeMode/mode-toggle";
 import Aurora from "@/components/reactBits/backgrounds/aurora/Aurora";
 import ModelViewer from "@/components/reactBits/animations/modelViewer/ModelViewer";
@@ -9,58 +8,33 @@ import { LangToggle } from "@/components/i18n/lang-toggle";
 import { Button } from "@/components/ui/button";
 
 import GlassSurface from "@/components/reactBits/components/glassSurface/GlassSurface";
-import {
-  SiReact,
-  SiNextdotjs,
-  SiTypescript,
-  SiTailwindcss,
-} from "react-icons/si";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { LaserFlow } from "@/components/reactBits/animations/laserFlow/LaserFlow";
 import GradientText from "@/components/reactBits/textAnimations/gradientText/GradientText";
-/*logo loop component*/
-const techLogos = [
-  { node: <SiReact />, title: "React", href: "https://react.dev" },
-  { node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org" },
-  {
-    node: <SiTypescript />,
-    title: "TypeScript",
-    href: "https://www.typescriptlang.org",
-  },
-  {
-    node: <SiTailwindcss />,
-    title: "Tailwind CSS",
-    href: "https://tailwindcss.com",
-  },
-];
+import StarBorder from "@/components/reactBits/animations/starBorder/StartBorder";
+import InteractiveSkills from "@/components/reactBits/animations/interactivePlayground/InteractiveSkills";
 
-// Alternative with image sources
-/*
-const imageLogos = [
-  {
-    src: "/logos/company1.png",
-    alt: "Company 1",
-    href: "https://company1.com",
-  },
-  {
-    src: "/logos/company2.png",
-    alt: "Company 2",
-    href: "https://company2.com",
-  },
-  {
-    src: "/logos/company3.png",
-    alt: "Company 3",
-    href: "https://company3.com",
-  },
-];*/
+const Kbd = ({ children }: { children: React.ReactNode }) => (
+  <kbd className="px-2 py-1.5 text-xs font-semibold text-foreground bg-primary/20 border border-primary/40 rounded-lg">
+    {children}
+  </kbd>
+);
 
 //aurora component: theme change observer------------------------------
 const Home: React.FC = () => {
   const { t } = useTranslation();
+  const [isMac, setIsMac] = useState(false);
+
+  useEffect(() => {
+    setIsMac(
+      typeof window !== "undefined" &&
+        /Mac|iPod|iPhone|iPad/.test(navigator.platform)
+    );
+  }, []);
 
   return (
-    <div className="relative min-h-screen isolate bg-background text-foreground">
+    <div className="relative min-h-screen isolate text-foreground">
       <div className="container mx-auto px-6 md:px-1 relative z-10">
         <section className="grid md:grid-cols-2 gap-10 py-16 relative z-10">
           <div className="flex flex-col justify-center">
@@ -70,13 +44,28 @@ const Home: React.FC = () => {
             <p className="mt-4 text-muted-foreground leading-relaxed ">
               {t("usedTechs")}
             </p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              {t("commandPalette.hint_pre")} <Kbd>{isMac ? "⌘" : "Ctrl"}</Kbd> +{" "}
+              <Kbd>K</Kbd> {t("commandPalette.hint_post")}
+            </p>
             <div className="mt-6 flex gap-3">
-              <Button asChild>
-                <Link to="/cv">Voir mon CV</Link>
-              </Button>
-              <Button variant="outline" asChild>
-                <Link to="/index">Voir les démos</Link>
-              </Button>
+              <StarBorder
+                as="button"
+                className="transition-transform duration-300 ease-in-out hover:scale-105"
+                thickness={3}
+                color="cyan"
+                speed="5s"
+              >
+                <Link to="/cv">{t("homeObject.seeCv")}</Link>
+              </StarBorder>
+              <StarBorder
+                as="button"
+                className="transition-transform duration-300 ease-in-out hover:scale-105"
+                color="cyan"
+                speed="5s"
+              >
+                <Link to="/index">{t("homeObject.seeDemos")}</Link>
+              </StarBorder>
             </div>
           </div>
           <div className="flex items-center justify-center w-full">
@@ -109,18 +98,10 @@ const Home: React.FC = () => {
         </div>
 
         <section className="relative z-10 py-8">
-          <LogoLoop
-            logos={techLogos}
-            speed={120}
-            direction="left"
-            logoHeight={48}
-            gap={40}
-            pauseOnHover
-            scaleOnHover
-            fadeOut
-            fadeOutColor="var(--background)"
-            ariaLabel="Technology partners"
-          />
+          <h2 className="text-3xl font-bold text-center mb-8">
+            {t("homeObject.interactiveSkillsTitle")}
+          </h2>
+          <InteractiveSkills />
         </section>
 
         <section className="relative z-10 py-12">
@@ -130,9 +111,7 @@ const Home: React.FC = () => {
             borderRadius={24}
             className="mx-auto flex items-center justify-center"
           >
-            <span className="leading-relaxed">
-              Disponible pour opportunités — Contactez-moi
-            </span>
+            <span className="leading-relaxed">{t("homeObject.available")}</span>
           </GlassSurface>
         </section>
       </div>
