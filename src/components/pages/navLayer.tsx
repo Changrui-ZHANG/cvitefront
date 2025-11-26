@@ -42,6 +42,10 @@ import { useTranslation } from "react-i18next";
 import { LangToggle } from "../i18n/lang-toggle";
 import { ModeToggle } from "../themeMode/mode-toggle";
 import { Separator } from "@radix-ui/react-dropdown-menu";
+import { CommandPalette } from "../reactBits/components/commandPalette/CommandPalette";
+import { FaHome } from "react-icons/fa";
+import { GrTest } from "react-icons/gr";
+import { FaRegIdCard } from "react-icons/fa";
 
 const NavLayer: React.FC = () => {
   const { t } = useTranslation();
@@ -50,22 +54,39 @@ const NavLayer: React.FC = () => {
   const navPages = [
     {
       item: (
+        <div className="flex items-center">
+          <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+            <Link to="/home">
+              <div className="flex flex-row items-center gap-2">
+                <FaHome className="mb-0.5 text-foreground" />
+                {t("home")}
+              </div>
+            </Link>
+          </NavigationMenuLink>
+        </div>
+      ),
+    },
+    {
+      item: (
         <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-          <Link to="/home">{t("home")}</Link>
+          <Link to="/cv">
+            <div className="flex flex-row items-center gap-2">
+              <FaRegIdCard className="mb-0.5 text-foreground" />
+              {t("cv")}
+            </div>
+          </Link>
         </NavigationMenuLink>
       ),
     },
     {
       item: (
         <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-          <Link to="/cv">{t("cv")}</Link>
-        </NavigationMenuLink>
-      ),
-    },
-    {
-      item: (
-        <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-          <Link to="/index">{t("index")}</Link>
+          <Link to="/beta">
+            <div className="flex flex-row items-center gap-2">
+              <GrTest className="mb-0.5 text-foreground" />
+              {t("beta")}
+            </div>
+          </Link>
         </NavigationMenuLink>
       ),
     },
@@ -103,6 +124,7 @@ const NavLayer: React.FC = () => {
 
   return (
     <div className="flex h-screen w-screen flex-col sticky bg-background text-foreground">
+      <CommandPalette />
       <main className="flex-1 flex flex-col">
         <div className="flex justify-center bg-background ">
           <NavigationMenu>

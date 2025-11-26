@@ -98,9 +98,6 @@ const Home: React.FC = () => {
         </div>
 
         <section className="relative z-10 py-8">
-          <h2 className="text-3xl font-bold text-center mb-8">
-            {t("homeObject.interactiveSkillsTitle")}
-          </h2>
           <InteractiveSkills />
         </section>
 

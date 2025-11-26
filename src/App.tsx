@@ -1,12 +1,12 @@
 import "./App.css";
-import Home from "@/components/pages/homePage/home";
-import IndexPage from "@/components/pages/indexPage/indexPage";
-import Cv from "@/components/pages/cv/cv";
+import Home from "@/components/pages/homePage/Home";
+import BetaPage from "@/components/pages/betaPage/BetaPage";
+import Cv from "@/components/pages/cv/Cv";
 
 import { ThemeProvider } from "@/components/themeMode/theme-provider";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import NavLayer from "@/components/pages/navLayer";
-
+import NavLayer from "@/components/pages/NavLayer";
+ 
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
@@ -16,7 +16,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="home" element={<Home />} />
             <Route path="cv" element={<Cv />} />
-            <Route path="index" element={<IndexPage />} />
+            <Route path="beta" element={<BetaPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
