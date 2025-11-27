@@ -51,7 +51,20 @@
     "seeCv": "See my CV",
     "seeDemos": "See demos",
     "available": "Available for opportunities — Contact me",
-    "logoAria": "Technology partners"
+    "logoAria": "Technology partners",
+    "fallingText": "For building this site, various technologies were integrated. The cooperation of these technical solutions ensures coherent, high-performance development adapted to the project's needs",
+    "fallingHighlights": [
+      "creation",
+      "technologies",
+      "cooperation",
+      "technical solutions",
+      "development",
+      "various",
+      "cooperation",
+      "coherent",
+      "high-performance",
+      "needs"
+    ]
   },
   "commandPalette": {
     "label": "Command Menu",

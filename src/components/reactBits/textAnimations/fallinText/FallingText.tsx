@@ -1,11 +1,9 @@
 import { useRef, useState, useEffect } from "react";
 import Matter from "matter-js";
-import "./FallingText.css";
 
 interface FallingTextProps {
   text?: string;
   highlightWords?: string[];
-  highlightClass?: string;
   trigger?: "auto" | "scroll" | "click" | "hover";
   backgroundColor?: string;
   wireframes?: boolean;
@@ -17,7 +15,6 @@ interface FallingTextProps {
 const FallingText: React.FC<FallingTextProps> = ({
   text = "",
   highlightWords = [],
-  highlightClass = "highlighted",
   trigger = "auto",
   backgroundColor = "transparent",
   wireframes = false,
@@ -34,16 +31,22 @@ const FallingText: React.FC<FallingTextProps> = ({
   useEffect(() => {
     if (!textRef.current) return;
     const words = text.split(" ");
+
     const newHTML = words
       .map((word) => {
         const isHighlighted = highlightWords.some((hw) => word.startsWith(hw));
-        return `<span class="word ${
-          isHighlighted ? highlightClass : ""
-        }">${word}</span>`;
+        return `<span
+          class="inline-block mx-[2px] select-none ${
+            isHighlighted ? "text-cyan-500 font-bold" : ""
+          }"
+        >
+          ${word}
+        </span>`;
       })
       .join(" ");
+
     textRef.current.innerHTML = newHTML;
-  }, [text, highlightWords, highlightClass]);
+  }, [text, highlightWords]);
 
   useEffect(() => {
     if (trigger === "auto") {
@@ -71,20 +74,13 @@ const FallingText: React.FC<FallingTextProps> = ({
     const { Engine, Render, World, Bodies, Runner, Mouse, MouseConstraint } =
       Matter;
 
-    if (
-      !containerRef.current ||
-      !canvasContainerRef.current ||
-      !textRef.current
-    )
-      return;
+    if (!containerRef.current || !canvasContainerRef.current) return;
 
     const containerRect = containerRef.current.getBoundingClientRect();
     const width = containerRect.width;
     const height = containerRect.height;
 
-    if (width <= 0 || height <= 0) {
-      return;
-    }
+    if (width <= 0 || height <= 0) return;
 
     const engine = Engine.create();
     engine.world.gravity.y = gravity;
@@ -133,9 +129,9 @@ const FallingText: React.FC<FallingTextProps> = ({
       boundaryOptions
     );
 
-    const wordSpans =
-      textRef.current.querySelectorAll<HTMLSpanElement>(".word");
-    const wordBodies = Array.from(wordSpans).map((elem) => {
+    if (!textRef.current) return;
+    const wordSpans = textRef.current.querySelectorAll("span");
+    const wordBodies = [...wordSpans].map((elem) => {
       const rect = elem.getBoundingClientRect();
 
       const x = rect.left - containerRect.left + rect.width / 2;
@@ -147,12 +143,12 @@ const FallingText: React.FC<FallingTextProps> = ({
         frictionAir: 0.01,
         friction: 0.2,
       });
-
       Matter.Body.setVelocity(body, {
         x: (Math.random() - 0.5) * 5,
         y: 0,
       });
       Matter.Body.setAngularVelocity(body, (Math.random() - 0.5) * 0.05);
+
       return { elem, body };
     });
 
@@ -176,6 +172,24 @@ const FallingText: React.FC<FallingTextProps> = ({
       },
     });
     render.mouse = mouse;
+
+    const stopWheelPropagation = (e: WheelEvent) => {
+      e.stopImmediatePropagation();
+    };
+    const stopTouchMovePropagation = (e: TouchEvent) => {
+      e.stopImmediatePropagation();
+    };
+    const el = containerRef.current;
+    if (el) {
+      el.addEventListener("wheel", stopWheelPropagation, {
+        passive: true,
+        capture: true,
+      });
+      el.addEventListener("touchmove", stopTouchMovePropagation, {
+        passive: true,
+        capture: true,
+      });
+    }
 
     World.add(engine.world, [
       floor,
@@ -208,6 +222,15 @@ const FallingText: React.FC<FallingTextProps> = ({
       if (render.canvas && canvasContainerRef.current) {
         canvasContainerRef.current.removeChild(render.canvas);
       }
+      const elCleanup = containerRef.current;
+      if (elCleanup) {
+        elCleanup.removeEventListener("wheel", stopWheelPropagation, true);
+        elCleanup.removeEventListener(
+          "touchmove",
+          stopTouchMovePropagation,
+          true
+        );
+      }
       World.clear(engine.world, false);
       Engine.clear(engine);
     };
@@ -228,23 +251,23 @@ const FallingText: React.FC<FallingTextProps> = ({
   return (
     <div
       ref={containerRef}
-      className="falling-text-container"
+      className="relative z-[1] w-auto h-50 cursor-pointer text-center pt-8 overflow-hidden mx-10"
       onClick={trigger === "click" ? handleTrigger : undefined}
       onMouseEnter={trigger === "hover" ? handleTrigger : undefined}
-      style={{
-        position: "relative",
-        overflow: "hidden",
-      }}
     >
       <div
         ref={textRef}
-        className="falling-text-target"
+        className="inline-block"
         style={{
-          fontSize: fontSize,
+          fontSize,
           lineHeight: 1.4,
         }}
       />
-      <div ref={canvasContainerRef} className="falling-text-canvas" />
+
+      <div
+        className="absolute top-0 left-0 z-0 pointer-events-none"
+        ref={canvasContainerRef}
+      />
     </div>
   );
 };

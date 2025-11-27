@@ -51,7 +51,19 @@
     "seeCv": "Voir mon CV",
     "seeDemos": "Voir les démos",
     "available": "Disponible pour opportunités — Contactez-moi",
-    "logoAria": "Partenaires technologiques"
+    "logoAria": "Partenaires technologiques",
+    "fallingText": "Pour la création de ce site, diverses technologies ont été intégrées. La coopération de ces solutions techniques garantit un développement cohérent, performant et adapté aux besoins du projet",
+    "fallingHighlights": [
+      "création",
+      "technologies",
+      "coopération",
+      "solutions techniques",
+      "développement",
+      "cohérent",
+      "performant",
+      "adapté",
+      "besoins"
+    ]
   },
   "commandPalette": {
     "label": "Menu de Commandes",

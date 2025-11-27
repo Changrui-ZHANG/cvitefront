@@ -7,18 +7,26 @@ import {
   SiTailwindcss,
   SiNodedotjs,
   SiVite,
+  SiShadcnui,
 } from "react-icons/si";
+import { FaDocker, FaGithub } from "react-icons/fa";
+import { IoLogoJavascript } from "react-icons/io";
+import { VscVscode } from "react-icons/vsc";
 
 const techLogos = [
   { icon: SiReact, name: "React" },
-  { icon: SiNextdotjs, name: "Next.js" },
   { icon: SiTypescript, name: "TypeScript" },
-  { icon: SiTailwindcss, name: "Tailwind" },
-  { icon: SiNodedotjs, name: "Node.js" },
+  { icon: SiTailwindcss, name: "Tailwind CSS" },
+  { icon: FaDocker, name: "Docker" },
   { icon: SiVite, name: "Vite" },
+  { icon: SiShadcnui, name: "Shadcn UI" },
+  { icon: FaGithub, name: "GitHub" },
+  { icon: IoLogoJavascript, name: "JavaScript" },
+  { icon: VscVscode, name: "VS Code" },
 ];
 
-const InteractiveSkills: React.FC = () => {
+
+const FallingIcon: React.FC = () => {
   const sceneRef = useRef<HTMLDivElement>(null);
   const engineRef = useRef(Matter.Engine.create());
   const [bodies, setBodies] = useState<Matter.Body[]>([]);
@@ -80,15 +88,28 @@ const InteractiveSkills: React.FC = () => {
     // Mouse control
     const mouse = Matter.Mouse.create(renderElement);
     const mouseConstraint = Matter.MouseConstraint.create(engine, {
-      mouse: mouse,
+      mouse,
       constraint: {
         stiffness: 0.2,
-        render: {
-          visible: false,
-        },
+        render: { visible: false },
       },
     });
     Matter.Composite.add(world, mouseConstraint);
+
+    const stopWheelPropagation = (e: WheelEvent) => {
+      e.stopImmediatePropagation();
+    };
+    const stopTouchMovePropagation = (e: TouchEvent) => {
+      e.stopImmediatePropagation();
+    };
+    renderElement.addEventListener("wheel", stopWheelPropagation, {
+      passive: true,
+      capture: true,
+    });
+    renderElement.addEventListener("touchmove", stopTouchMovePropagation, {
+      passive: true,
+      capture: true,
+    });
 
     // Run the simulation
     const runner = Matter.Runner.create();
@@ -111,13 +132,21 @@ const InteractiveSkills: React.FC = () => {
       Matter.Engine.clear(engine);
       Matter.Composite.clear(world, false);
       clearTimeout(gravityTimeout);
+      if (renderElement) {
+        renderElement.removeEventListener("wheel", stopWheelPropagation, true);
+        renderElement.removeEventListener(
+          "touchmove",
+          stopTouchMovePropagation,
+          true
+        );
+      }
     };
   }, []);
 
   return (
     <div
       ref={sceneRef}
-      className="relative w-full h-[400px] border rounded-lg overflow-hidden"
+      className="relative w-auto h-[400px] border rounded-lg overflow-hidden mx-10"
     >
       {bodies.map((body, i) => {
         const { x, y } = body.position;
@@ -133,6 +162,7 @@ const InteractiveSkills: React.FC = () => {
           <div
             key={i}
             style={{
+              padding: 5,
               position: "absolute",
               left: x - size / 2,
               top: y - size / 2,
@@ -150,4 +180,4 @@ const InteractiveSkills: React.FC = () => {
   );
 };
 
-export default InteractiveSkills;
+export default FallingIcon;

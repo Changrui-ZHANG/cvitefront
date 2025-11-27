@@ -13,7 +13,17 @@ import { Link } from "react-router-dom";
 import { LaserFlow } from "@/components/reactBits/animations/laserFlow/LaserFlow";
 import GradientText from "@/components/reactBits/textAnimations/gradientText/GradientText";
 import StarBorder from "@/components/reactBits/animations/starBorder/StartBorder";
-import InteractiveSkills from "@/components/reactBits/animations/interactivePlayground/InteractiveSkills";
+import FallingIcon from "@/components/reactBits/animations/fallingIcon/FallingIcon";
+import LogoLoop from "@/components/reactBits/animations/logoLoop/LogoLoop";
+import { FaDocker } from "react-icons/fa";
+import { SiVite } from "react-icons/si";
+import { SiShadcnui } from "react-icons/si";
+import { FaGithub } from "react-icons/fa";
+import { IoLogoJavascript } from "react-icons/io";
+import { VscVscode } from "react-icons/vsc";
+
+import { SiReact, SiTailwindcss, SiTypescript } from "react-icons/si";
+import FallingText from "@/components/reactBits/textAnimations/fallinText/FallingText";
 
 const Kbd = ({ children }: { children: React.ReactNode }) => (
   <kbd className="px-2 py-1.5 text-xs font-semibold text-foreground bg-primary/20 border border-primary/40 rounded-lg">
@@ -32,6 +42,49 @@ const Home: React.FC = () => {
         /Mac|iPod|iPhone|iPad/.test(navigator.platform)
     );
   }, []);
+  const techLogos = [
+    { node: <SiReact />, title: "React", href: "https://react.dev" },
+    {
+      node: <SiTypescript />,
+      title: "TypeScript",
+      href: "https://www.typescriptlang.org",
+    },
+    {
+      node: <SiTailwindcss />,
+      title: "Tailwind CSS",
+      href: "https://tailwindcss.com",
+    },
+    {
+      node: <FaDocker />,
+      title: "Docker",
+      href: "https://www.docker.com",
+    },
+    {
+      node: <SiVite />,
+      title: "Vite",
+      href: "https://vitejs.dev",
+    },
+    {
+      node: <SiShadcnui />,
+      title: "Shadcn UI",
+      href: "https://ui.shadcn.com",
+    },
+    {
+      node: <FaGithub />,
+      title: "GitHub",
+      href: "https://github.com",
+    },
+    {
+      node: <IoLogoJavascript />,
+      title: "JavaScript",
+      href: "https://www.javascript.com",
+    },
+    {
+      node: <VscVscode />,
+      title: "VS Code",
+      href: "https://code.visualstudio.com",
+    },
+  ];
 
   return (
     <div className="relative min-h-screen isolate text-foreground">
@@ -82,7 +135,7 @@ const Home: React.FC = () => {
           </div>
         </section>
 
-        <div className="flex-col justify-center">
+        <section className="flex-col justify-center">
           <MagicBento
             textAutoHide
             enableStars
@@ -95,10 +148,40 @@ const Home: React.FC = () => {
             particleCount={12}
             glowColor="132, 0, 255"
           />
-        </div>
-
-        <section className="relative z-10 py-8">
-          <InteractiveSkills />
+        </section>
+        <section>
+          <FallingText
+            text={t("homeObject.fallingText")}
+            highlightWords={Object.values(
+              t("homeObject.fallingHighlights", {
+                returnObjects: true,
+              })
+            )}
+            trigger="click"
+            backgroundColor="transparent"
+            wireframes={false}
+            gravity={0.56}
+            fontSize="2rem"
+            mouseConstraintStiffness={0.9}
+          />
+          <section className="relative">
+            <FallingIcon />
+          </section>
+          <section className="relative py-18">
+            <LogoLoop
+              logos={techLogos}
+              speed={120}
+              direction="left"
+              logoHeight={48}
+              gap={80}
+              pauseOnHover
+              scaleOnHover
+              fadeOut
+              fadeOutColor="var(--background)"
+              ariaLabel={t("homeObject.logoAria")}
+       
+            />
+          </section>
         </section>
 
         <section className="relative z-10 py-12">
