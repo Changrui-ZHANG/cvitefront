@@ -14,8 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { useTranslation, Trans } from "react-i18next";
 import GradualBlur from "@/components/reactBits/animations/gradualBlur/GradualBlur";
-import GlareHover from "@/components/reactBits/animations/glareHover/GlareHover";
-import GradientText from "@/components/reactBits/textAnimations/gradientText/GradientText";
+
 export default function Cv() {
   const containerVariants = {
     hidden: { opacity: 0 },

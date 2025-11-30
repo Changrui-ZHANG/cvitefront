@@ -6,7 +6,7 @@ import Cv from "@/components/pages/cv/Cv";
 import { ThemeProvider } from "@/components/themeMode/theme-provider";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavLayer from "@/components/pages/NavLayer";
- 
+
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">

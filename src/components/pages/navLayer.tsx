@@ -1,38 +1,12 @@
 import { Outlet, Link } from "react-router-dom";
-import BubbleMenu from "../reactBits/components/bubbleMenu/BubbleMenu";
-import PillNav from "../reactBits/components/pillNav/PillNav";
-import GooeyNav from "../reactBits/components/gooeyNav/GooeyNav";
-import {
-  CircleHelpIcon,
-  CircleIcon,
-  CircleCheckIcon,
-  Home,
-  OptionIcon,
-} from "lucide-react";
 import { GrSettingsOption } from "react-icons/gr";
 import {
   NavigationMenu,
   NavigationMenuList,
   NavigationMenuItem,
-  NavigationMenuContent,
-  NavigationMenuTrigger,
   NavigationMenuLink,
-  NavigationMenuIndicator,
-  NavigationMenuViewport,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectScrollDownButton,
-  SelectScrollUpButton,
-  SelectSeparator,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import {
   Popover,
   PopoverContent,
@@ -41,7 +15,6 @@ import {
 import { useTranslation } from "react-i18next";
 import { LangToggle } from "../i18n/lang-toggle";
 import { ModeToggle } from "../themeMode/mode-toggle";
-import { Separator } from "@radix-ui/react-dropdown-menu";
 import { CommandPalette } from "../reactBits/components/commandPalette/CommandPalette";
 import { FaHome } from "react-icons/fa";
 import { GrTest } from "react-icons/gr";

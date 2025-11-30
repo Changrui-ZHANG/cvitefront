@@ -2,10 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import Matter from "matter-js";
 import {
   SiReact,
-  SiNextdotjs,
   SiTypescript,
   SiTailwindcss,
-  SiNodedotjs,
   SiVite,
   SiShadcnui,
 } from "react-icons/si";
@@ -24,7 +22,6 @@ const techLogos = [
   { icon: IoLogoJavascript, name: "JavaScript" },
   { icon: VscVscode, name: "VS Code" },
 ];
-
 
 const FallingIcon: React.FC = () => {
   const sceneRef = useRef<HTMLDivElement>(null);

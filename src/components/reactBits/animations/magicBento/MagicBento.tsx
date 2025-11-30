@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState, useCallback } from "react";
 import { gsap } from "gsap";
-import { FaReact } from "react-icons/fa";
+
 import { MdDashboard } from "react-icons/md";
 import { MdGroups } from "react-icons/md";
 import { MdAutoAwesome } from "react-icons/md";

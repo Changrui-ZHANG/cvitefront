@@ -251,7 +251,7 @@ const FallingText: React.FC<FallingTextProps> = ({
   return (
     <div
       ref={containerRef}
-      className="relative z-[1] w-auto h-50 cursor-pointer text-center pt-8 overflow-hidden mx-10"
+      className="relative z-[1] w-auto h-50 cursor-pointer text-center pt-8 overflow-hidden mx-10 cursor-target"
       onClick={trigger === "click" ? handleTrigger : undefined}
       onMouseEnter={trigger === "hover" ? handleTrigger : undefined}
     >

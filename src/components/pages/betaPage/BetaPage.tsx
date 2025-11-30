@@ -1,8 +1,19 @@
 import { Button } from "@/components/ui/button";
 import GlassSurface from "@/components/reactBits/components/glassSurface/GlassSurface";
+import TargetCursor from "@/components/reactBits/animations/targetCursor/TargetCursor";
 const DemoPage: React.FC = () => {
   return (
     <div className="flex flex-col border border-yellow-300 h-1000">
+      <div className="flex">
+        <div id="window" className="h-300 w-200 bg-red-600">
+          <TargetCursor
+            spinDuration={2}
+            hideDefaultCursor={true}
+            parallaxOn={true}
+          />
+        </div>
+        <div id="window" className="h-300 w-200 bg-green-600"></div>
+      </div>
       <div className="sticky top-0 ml-auto">
         <GlassSurface width={300} height={40} borderRadius={24} className="p-7">
           <h2>Glass Surface Content</h2>
