@@ -5,7 +5,7 @@ import Cv from "@/components/pages/cv/Cv";
 
 import { ThemeProvider } from "@/components/themeMode/theme-provider";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import NavLayer from "@/components/pages/NavLayer";
+import NavLayer from "@/components/pages/navLayer";
 
 function App() {
   return (
