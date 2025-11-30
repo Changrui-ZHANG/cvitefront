@@ -18,9 +18,6 @@ interface GlareHoverProps {
 }
 
 const GlareHover: React.FC<GlareHoverProps> = ({
-  background = "var(--bg-card)",
-  borderRadius = "10px",
-  borderColor = "#333",
   children,
   glareColor = "#ffffff",
   glareOpacity = 0.5,
@@ -29,7 +26,6 @@ const GlareHover: React.FC<GlareHoverProps> = ({
   transitionDuration = 650,
   playOnce = false,
   className = "",
-  style = {},
 }) => {
   const hex = glareColor.replace("#", "");
   let rgba = glareColor;

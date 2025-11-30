@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./CommandPalette.css";
 import { Command } from "cmdk";
 import { useNavigate } from "react-router-dom";

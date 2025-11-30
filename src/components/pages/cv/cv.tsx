@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { useTranslation, Trans } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import GradualBlur from "@/components/reactBits/animations/gradualBlur/GradualBlur";
 
 export default function Cv() {

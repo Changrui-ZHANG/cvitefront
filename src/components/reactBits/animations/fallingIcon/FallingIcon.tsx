@@ -56,7 +56,7 @@ const FallingIcon: React.FC = () => {
       { isStatic: true }
     );
 
-    const initialBodies = techLogos.map((tech, i) => {
+    const initialBodies = techLogos.map(() => {
       const size = Math.min(width, height) / 7;
       return Matter.Bodies.rectangle(
         size + Math.random() * (width - size * 2),
