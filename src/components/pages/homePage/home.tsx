@@ -20,8 +20,8 @@ import { SiReact, SiTailwindcss, SiTypescript } from "react-icons/si";
 import FallingText from "@/components/reactBits/textAnimations/fallinText/FallingText";
 import FadeContent from "@/components/reactBits/animations/fadeContent/FadeContent";
 import ShinyText from "@/components/reactBits/textAnimations/shinyText/ShinyText";
-import ScrollVelocity from "@/components/reactBits/textAnimations/scrollVelocity/ScrollVelocity";
 import SplitText from "@/components/reactBits/textAnimations/splitText/SplitText";
+import CurvedLoop from "@/components/reactBits/textAnimations/curvedLoop/CurvedLoop";
 
 const Kbd = ({ children }: { children: React.ReactNode }) => (
   <kbd className="px-2 py-1.5 text-xs font-semibold text-foreground bg-primary/20 border border-primary/40 rounded-lg">
@@ -37,7 +37,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     setIsMac(
       typeof window !== "undefined" &&
-        /Mac|iPod|iPhone|iPad/.test(navigator.platform)
+      /Mac|iPod|iPhone|iPad/.test(navigator.platform)
     );
   }, []);
   const techLogos = [
@@ -98,7 +98,7 @@ const Home: React.FC = () => {
               <h1 className="text-4xl md:text-5xl font-bold leading-tight">
                 <SplitText
                   text={t("welcome")}
-                  className="text-4xl md:text-5xl"
+                  className="text-3xl md:text-5xl"
                   delay={30}
                   duration={0.3}
                   ease="power3.out"
@@ -144,7 +144,7 @@ const Home: React.FC = () => {
               </div>
             </div>
             <div className="flex items-center justify-center w-full">
-              <div className="w-full max-w-[360px]">
+              <div className="w-full max-w-[300px] md:max-w-[360px]">
                 <ModelViewer
                   url={modelTest}
                   width={360}
@@ -183,7 +183,7 @@ const Home: React.FC = () => {
               backgroundColor="transparent"
               wireframes={false}
               gravity={0.56}
-              fontSize="2rem"
+              fontSize="1.5rem"
               mouseConstraintStiffness={0.9}
             />
             <div className="relative">
@@ -202,23 +202,28 @@ const Home: React.FC = () => {
                 fadeOutColor="var(--background)"
                 ariaLabel={t("homeObject.logoAria")}
               />
+              <CurvedLoop
+                marqueeText="React ✦ TypeScript ✦ Tailwind CSS ✦ Docker ✦ Vite ✦ Shadcn UI ✦ GitHub ✦ JavaScript ✦ VS Code
+"
+                speed={1}
+                curveAmount={150}
+                direction="left"
+                interactive={true}
+                className="text-4xl md:text-5xl font-bold"
+              />
+
             </div>
             <div>
-              <ScrollVelocity
-                texts={["React Bits", "Scroll Down"]}
-                velocity={50}
-                className="custom-scroll-text"
-                damping={50}
-              />
+
             </div>
           </section>
 
           <section className="relative z-10 py-12">
             <GlassSurface
-              width={600}
+              width="100%"
               height={64}
               borderRadius={24}
-              className="mx-auto flex items-center justify-center"
+              className="mx-auto flex items-center justify-center max-w-[600px]"
             >
               <span className="leading-relaxed">
                 {t("homeObject.available")}

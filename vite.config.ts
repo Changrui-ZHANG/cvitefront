@@ -12,4 +12,8 @@ export default defineConfig({
     },
   },
   assetsInclude: ["**/*.glb"],
+  server: {
+    port: 3000,
+    host: "true",
+  },
 });

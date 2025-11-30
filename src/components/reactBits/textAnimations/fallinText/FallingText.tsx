@@ -36,8 +36,7 @@ const FallingText: React.FC<FallingTextProps> = ({
       .map((word) => {
         const isHighlighted = highlightWords.some((hw) => word.startsWith(hw));
         return `<span
-          class="inline-block mx-[2px] select-none ${
-            isHighlighted ? "text-cyan-500 font-bold" : ""
+          class="inline-block mx-[2px] select-none ${isHighlighted ? "text-cyan-500 font-bold" : ""
           }"
         >
           ${word}
@@ -81,6 +80,9 @@ const FallingText: React.FC<FallingTextProps> = ({
     const height = containerRect.height;
 
     if (width <= 0 || height <= 0) return;
+
+    // Lock the height of the container to prevent collapse
+    containerRef.current.style.height = `${height}px`;
 
     const engine = Engine.create();
     engine.world.gravity.y = gravity;
@@ -154,12 +156,10 @@ const FallingText: React.FC<FallingTextProps> = ({
 
     wordBodies.forEach(({ elem, body }) => {
       elem.style.position = "absolute";
-      elem.style.left = `${
-        body.position.x - body.bounds.max.x + body.bounds.min.x / 2
-      }px`;
-      elem.style.top = `${
-        body.position.y - body.bounds.max.y + body.bounds.min.y / 2
-      }px`;
+      elem.style.left = `${body.position.x - body.bounds.max.x + body.bounds.min.x / 2
+        }px`;
+      elem.style.top = `${body.position.y - body.bounds.max.y + body.bounds.min.y / 2
+        }px`;
       elem.style.transform = "none";
     });
 
@@ -251,7 +251,7 @@ const FallingText: React.FC<FallingTextProps> = ({
   return (
     <div
       ref={containerRef}
-      className="relative z-[1] w-auto h-50 cursor-pointer text-center pt-8 overflow-hidden mx-10 cursor-target"
+      className="relative z-[1] w-full h-auto cursor-pointer text-center pt-8 overflow-hidden cursor-target"
       onClick={trigger === "click" ? handleTrigger : undefined}
       onMouseEnter={trigger === "hover" ? handleTrigger : undefined}
     >
