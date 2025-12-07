@@ -1,7 +1,7 @@
 {
-  "welcome": "Bienvenue",
+  "welcome": "Bienvenue !",
   "about": "À propos de moi",
-  "usedTechs": "Ce site est développé en ReactJs + Java",
+  "usedTechs": "Ce site est développé en ReactJs + Java.",
   "contact": "Contact",
   "en": "Anglais",
   "fr": "Français",
@@ -12,6 +12,10 @@
   "langs": "LanguagesFr",
   "param": "Paramètre",
   "theme": "Thème",
+  "since": "Depuis",
+  "day": "jour",
+  "days": "jours",
+  "initSince": "Initialisé il y a",
 
   "magicBento": {
     "cards": {
@@ -50,8 +54,17 @@
   "homeObject": {
     "seeCv": "Voir mon CV",
     "seeDemos": "Voir les démos",
-    "available": "Disponible pour opportunités — Contactez-moi",
+    "available": "Site en cours de construction - patientez",
     "logoAria": "Partenaires technologiques",
+    "rotatingHeadingPrefix": "Ensemble, on",
+    "rotatingTexts": [
+      "progresse",
+      "développe",
+      "avance",
+      "innove",
+      "fabrique",
+      "découvre"
+    ],
     "fallingText": "Pour la création de ce site, diverses technologies ont été intégrées. La coopération de ces solutions techniques garantit un développement cohérent, performant et adapté aux besoins du projet",
     "fallingHighlights": [
       "création",

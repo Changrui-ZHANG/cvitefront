@@ -4,12 +4,15 @@ import {
   useRef,
   useEffect,
   type MutableRefObject,
-  type CSSProperties,
+  type RefObject,
   type HTMLAttributes,
 } from "react";
 import { motion } from "motion/react";
+import "./VariableProximity.css";
 
-function useAnimationFrame(callback: () => void) {
+type Callback = () => void;
+
+function useAnimationFrame(callback: Callback) {
   useEffect(() => {
     let frameId: number;
     const loop = () => {
@@ -21,9 +24,7 @@ function useAnimationFrame(callback: () => void) {
   }, [callback]);
 }
 
-function useMousePositionRef(
-  containerRef: MutableRefObject<HTMLElement | null>
-) {
+function useMousePositionRef(containerRef: RefObject<HTMLElement | null>) {
   const positionRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -58,12 +59,12 @@ interface VariableProximityProps extends HTMLAttributes<HTMLSpanElement> {
   label: string;
   fromFontVariationSettings: string;
   toFontVariationSettings: string;
-  containerRef: MutableRefObject<HTMLElement | null>;
+  containerRef: RefObject<HTMLElement | null>;
   radius?: number;
   falloff?: "linear" | "exponential" | "gaussian";
   className?: string;
   onClick?: () => void;
-  style?: CSSProperties;
+  style?: React.CSSProperties;
 }
 
 const VariableProximity = forwardRef<HTMLSpanElement, VariableProximityProps>(
@@ -179,17 +180,16 @@ const VariableProximity = forwardRef<HTMLSpanElement, VariableProximityProps>(
     return (
       <span
         ref={ref}
+        className={`${className} variable-proximity`}
         onClick={onClick}
-        style={{
-          display: "inline",
-          fontFamily: '"Roboto Flex", sans-serif',
-          ...style,
-        }}
-        className={className}
+        style={{ display: "inline", ...style }}
         {...restProps}
       >
         {words.map((word, wordIndex) => (
-          <span key={wordIndex} className="inline-block whitespace-nowrap">
+          <span
+            key={wordIndex}
+            style={{ display: "inline-block", whiteSpace: "nowrap" }}
+          >
             {word.split("").map((letter) => {
               const currentLetterIndex = letterIndex++;
               return (
@@ -210,7 +210,7 @@ const VariableProximity = forwardRef<HTMLSpanElement, VariableProximityProps>(
               );
             })}
             {wordIndex < words.length - 1 && (
-              <span className="inline-block">&nbsp;</span>
+              <span style={{ display: "inline-block" }}>&nbsp;</span>
             )}
           </span>
         ))}

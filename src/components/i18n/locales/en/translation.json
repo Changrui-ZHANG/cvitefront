@@ -1,7 +1,7 @@
 {
-  "welcome": "Welcome",
+  "welcome": "Welcome !",
   "about": "About me",
-  "usedTechs": "This website is developed with ReactJs + Java",
+  "usedTechs": "This website is developed with ReactJs + Java.",
   "contact": "Contact",
   "en": "English",
   "fr": "French",
@@ -12,6 +12,10 @@
   "langs": "Languages",
   "param": "Settings",
   "theme": "Theme",
+  "since": "Since",
+  "day": "day",
+  "days": "days",
+  "initSince": "Initialized more than",
 
   "magicBento": {
     "cards": {
@@ -50,8 +54,17 @@
   "homeObject": {
     "seeCv": "See my CV",
     "seeDemos": "See demos",
-    "available": "Available for opportunities — Contact me",
+    "available": "Website under construction - please wait",
     "logoAria": "Technology partners",
+    "rotatingHeadingPrefix": "Together, we",
+    "rotatingTexts": [
+      "progress",
+      "develop",
+      "advance",
+      "innovate",
+      "build",
+      "discover"
+    ],
     "fallingText": "For building this site, various technologies were integrated. The cooperation of these technical solutions ensures coherent, high-performance development adapted to the project's needs",
     "fallingHighlights": [
       "creation",
