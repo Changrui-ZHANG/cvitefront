@@ -37,7 +37,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     setIsMac(
       typeof window !== "undefined" &&
-      /Mac|iPod|iPhone|iPad/.test(navigator.platform)
+        /Mac|iPod|iPhone|iPad/.test(navigator.platform)
     );
   }, []);
   const techLogos = [
@@ -110,14 +110,14 @@ const Home: React.FC = () => {
                   textAlign="center"
                 />
               </h1>
-              <p className="mt-4 text-muted-foreground leading-relaxed ">
+              <div className="mt-4 text-muted-foreground leading-relaxed ">
                 <ShinyText
                   text={t("usedTechs")}
                   disabled={false}
                   speed={3}
                   className="custom-class"
                 />
-              </p>
+              </div>
               <p className="mt-2 text-sm text-muted-foreground">
                 {t("commandPalette.hint_pre")} <Kbd>{isMac ? "⌘" : "Ctrl"}</Kbd>{" "}
                 + <Kbd>K</Kbd> {t("commandPalette.hint_post")}
@@ -139,7 +139,7 @@ const Home: React.FC = () => {
                   color="cyan"
                   speed="5s"
                 >
-                  <Link to="/index">{t("homeObject.seeDemos")}</Link>
+                  <Link to="/beta">{t("homeObject.seeDemos")}</Link>
                 </StarBorder>
               </div>
             </div>
@@ -211,11 +211,8 @@ const Home: React.FC = () => {
                 interactive={true}
                 className="text-4xl md:text-5xl font-bold"
               />
-
             </div>
-            <div>
-
-            </div>
+            <div></div>
           </section>
 
           <section className="relative z-10 py-12">

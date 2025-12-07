@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import GlassSurface from "@/components/reactBits/components/glassSurface/GlassSurface";
 import TargetCursor from "@/components/reactBits/animations/targetCursor/TargetCursor";
+
 const DemoPage: React.FC = () => {
   return (
     <div className="flex flex-col border border-yellow-300 h-1000">
@@ -22,7 +23,6 @@ const DemoPage: React.FC = () => {
           </Button>
         </GlassSurface>
       </div>
-
       <div
         id="root"
         className="grid grid-cols-5 grid-rows-5 place-items-center border-5"
