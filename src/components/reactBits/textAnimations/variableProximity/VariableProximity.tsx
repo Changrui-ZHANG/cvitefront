@@ -3,7 +3,6 @@ import {
   useMemo,
   useRef,
   useEffect,
-  type MutableRefObject,
   type RefObject,
   type HTMLAttributes,
 } from "react";

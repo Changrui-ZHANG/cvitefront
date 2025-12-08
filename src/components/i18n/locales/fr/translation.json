@@ -16,6 +16,7 @@
   "day": "jour",
   "days": "jours",
   "initSince": "Initialisé il y a",
+  "developerQuality": "Creativité Autonomie Adaptabilité Fiabilité Proactivité Curiosité",
 
   "magicBento": {
     "cards": {
@@ -56,7 +57,7 @@
     "seeDemos": "Voir les démos",
     "available": "Site en cours de construction - patientez",
     "logoAria": "Partenaires technologiques",
-    "rotatingHeadingPrefix": "Ensemble, on",
+    "rotatingTogether": "Ensemble, on",
     "rotatingTexts": [
       "progresse",
       "développe",

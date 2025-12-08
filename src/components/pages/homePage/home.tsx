@@ -26,6 +26,7 @@ import GradientText from "@/components/reactBits/textAnimations/gradientText/Gra
 import { useRef } from "react";
 import VariableProximity from "@/components/reactBits/textAnimations/variableProximity/VariableProximity";
 import CountUp from "@/components/reactBits/textAnimations/countUp/CountUp";
+import TrueFocus from "@/components/reactBits/textAnimations/trueFocus/TrueFocus";
 
 const Kbd = ({ children }: { children: React.ReactNode }) => (
   <kbd className="px-2 py-1.5 text-xs font-semibold text-foreground bg-primary/20 border border-primary/40 rounded-lg">
@@ -102,9 +103,9 @@ const Home: React.FC = () => {
       initialOpacity={0}
     >
       <div className="relative min-h-screen isolate text-foreground">
-        <div className="container mx-auto px-6 md:px-1 relative z-10">
-          <section className="grid md:grid-cols-2 gap-10 py-16 relative z-10">
-            <div className="flex flex-col justify-center">
+        <div className="container mx-auto px-6 md:px-1 relative">
+          <section className="grid md:grid-cols-2 gap-10 py-10 px-10">
+            <div className="flex flex-col justify-center ">
               <GradientText
                 colors={[
                   "var(--muted-foreground)",
@@ -122,13 +123,13 @@ const Home: React.FC = () => {
                 {t("welcome")}
               </GradientText>
 
-              <h2 className="text-3xl md:text-4xl font-bold leading-tight flex">
-                {t("homeObject.rotatingHeadingPrefix")}
+              <h2 className="text-3xl md:text-4xl font-bold leading-tight inline-flex flex-wrap items-center gap-3">
+                {t("homeObject.rotatingTogether")}
                 <RotatingText
                   texts={Object.values(
                     t("homeObject.rotatingTexts", { returnObjects: true })
                   )}
-                  mainClassName="bg-foreground text-background overflow-hidden justify-center rounded-lg px-1 mx-3"
+                  mainClassName="bg-foreground text-background overflow-hidden justify-center rounded-lg px-2"
                   staggerFrom={"last"}
                   initial={{ y: "100%" }}
                   animate={{ y: 0 }}
@@ -150,11 +151,12 @@ const Home: React.FC = () => {
                     separator=","
                     direction="up"
                     duration={2}
+                    className="border-b-3 border-dashed border-muted-foreground"
                   />
                   {" " + t("days") + "."}
                 </span>
               </div>
-              <p className="mt-2 text-sm text-muted-foreground">
+              <p className="mt-2 text-sm text-muted-foreground font-bold">
                 {t("commandPalette.hint_pre")} <Kbd>{isMac ? "⌘" : "Ctrl"}</Kbd>{" "}
                 + <Kbd>K</Kbd> {t("commandPalette.hint_post")}
               </p>
@@ -178,6 +180,7 @@ const Home: React.FC = () => {
                 </StarBorder>
               </div>
             </div>
+
             <div className="flex items-center justify-center w-full">
               <div className="w-full max-w-[300px] md:max-w-[360px]">
                 <ModelViewer
@@ -191,7 +194,20 @@ const Home: React.FC = () => {
               </div>
             </div>
           </section>
-
+          <section className="mb-10 text-center">
+            <div className="flex flex-col justify-center items-center">
+              {/* ACID Atomicité Cohérence Isolation Durabilité*/}
+              <TrueFocus
+                sentence={t("developerQuality")}
+                manualMode={false}
+                blurAmount={5}
+                borderColor="red"
+                animationDuration={2}
+                pauseBetweenAnimations={1}
+                className="leading-10 text-3xl font-black text-foreground border-dashed border-muted-foreground"
+              />
+            </div>
+          </section>
           <section className="flex-col justify-center">
             <MagicBento
               textAutoHide
@@ -251,7 +267,7 @@ const Home: React.FC = () => {
           </section>
         </div>
 
-        <section className="z-10 py-5 sticky bottom-0">
+        <section className="py-5 sticky bottom-0">
           <GlassSurface
             width="100%"
             height={64}
